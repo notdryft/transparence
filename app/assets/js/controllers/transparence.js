@@ -24,7 +24,7 @@ transparence.controller('TransparenceController', ['$rootScope', '$scope', 'Row'
     20, //   Month 9
     22, //   Month 10
     20, //   Month 11
-    22, //   Month 12
+    22  //   Month 12
   ];
 
   var rows = [];

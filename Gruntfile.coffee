@@ -34,6 +34,7 @@ module.exports = (grunt) ->
           '// Source: ' + path + '\n' + src.replace(/\/\* .* \*\/\n*'use strict';\n/g, '')
       all:
         src: [
+          'app/assets/js/lib/*.js'
           'app/assets/js/bootstrap.js'
           'app/assets/js/filters/*.js'
           'app/assets/js/factories/*.js'
@@ -56,7 +57,7 @@ module.exports = (grunt) ->
       production:
         options:
           paths: ['app/assets/less']
-          yuicompress: true
+          cleancss: true
         files:
           'dist/assets/css/transparence.min.css': 'app/assets/less/**/*.less'
 
