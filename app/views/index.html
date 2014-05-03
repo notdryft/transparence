@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="Transparence">
+<head>
+  <meta charset="utf-8">
+  <title>Transparence</title>
+
+  <!-- Dependencies -->
+
+  <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/css/bootstrap-theme.min.css">
+
+  <!-- Application -->
+
+  <link rel="stylesheet" href="assets/css/transparence.min.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!--<svg id="graph" width="768" height="432"></svg>-->
+  <div id="content" ng-controller="TransparenceController">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Worked days</th>
+          <th>Sales</th>
+          <th>Tax-free rate</th>
+          <th>&Delta; of generated sales</th>
+          <th>Mean of &Delta; generated sales</th>
+          <th>Bonus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in rows">
+          <td>{{ row.label() }}</td>
+          <td class="text-right">{{ row.workedDays }}</td>
+          <td class="text-right">{{ row.sales() | number: 2 }} &euro;</td>
+          <td class="text-right">{{ row.taxFreeRate | number: 2 }} &euro;</td>
+          <td class="text-right">{{ row.delta() | number: 2 }} &euro;</td>
+          <td class="text-right">{{ row.mean() | number: 2 }} &euro;</td>
+          <td class="text-right">{{ row.bonus() | number: 2 }} &euro;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Dependencies -->
+
+<script type="text/javascript" src="vendor/js/jquery.min.js"></script>
+<script type="text/javascript" src="vendor/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="vendor/js/angular.min.js"></script>
+
+<!-- Application -->
+
+<script type="text/javascript" src="assets/js/transparence.js"></script>
+
+</body>
+</html>

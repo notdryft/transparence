@@ -1,0 +1,21 @@
+# mac stuff
+.DS_Store
+
+# ides
+.idea
+
+# node
+npm-debug.log
+node_modules
+
+# bower
+bower_components
+
+# build
+build
+
+# dist
+dist/index.html
+dist/assets/css
+dist/assets/js
+dist/vendor
