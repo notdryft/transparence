@@ -5,6 +5,12 @@ module.exports = (grunt) ->
 
     pkg: grunt.file.readJSON('package.json')
 
+    env:
+      development:
+        NODE_ENV: 'development'
+      production:
+        NODE_ENV: 'production'
+
     clean:
       all:
         src: [
@@ -99,6 +105,7 @@ module.exports = (grunt) ->
 
   # Tasks
 
+  grunt.loadNpmTasks('grunt-env')
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-contrib-jshint')
   grunt.loadNpmTasks('grunt-contrib-concat')
@@ -112,6 +119,6 @@ module.exports = (grunt) ->
   # Default task
 
   grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify', 'less', 'preprocess:index', 'copy'])
-  grunt.registerTask('package', ['clean:package', 'shell:package'])
+  grunt.registerTask('package', ['default', 'shell:package'])
 
   return

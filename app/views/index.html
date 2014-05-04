@@ -11,7 +11,12 @@
 
   <!-- Application -->
 
+  <!-- @if NODE_ENV='development' -->
+  <link rel="stylesheet" href="assets/css/transparence.css">
+  <!-- @endif -->
+  <!-- @if NODE_ENV='production' -->
   <link rel="stylesheet" href="assets/css/transparence.min.css">
+  <!-- @endif -->
 </head>
 <body>
 
@@ -53,7 +58,11 @@
 
 <!-- Application -->
 
+<!-- @if NODE_ENV='development' -->
 <script type="text/javascript" src="assets/js/transparence.js"></script>
-
+<!-- @endif -->
+<!-- @if NODE_ENV='production' -->
+<script type="text/javascript" src="assets/js/transparence.min.js"></script>
+<!-- @endif -->
 </body>
 </html>
