@@ -1,8 +1,8 @@
-/* global angular, d3, transparence */
+/* global d3, transparence */
 
 'use strict';
 
-transparence.directive('chart', ['$timeout', function ($timeout) {
+transparence.directive('chart', function () {
 
   return {
     restrict: 'A',
@@ -12,22 +12,29 @@ transparence.directive('chart', ['$timeout', function ($timeout) {
 
     link: function (scope, element, attributes) {
 
-      $timeout(function () {
-        var svg = d3.select(element[0]);
+      var svg = d3.select(element[0]);
 
-        var lgroup = svg.append('g')
-          .classed('lines-container', true);
+      var lgroup = svg.append('g')
+        .classed('lines-container', true);
 
-        var lines =
-          d3.chart.lines()
-            .data(scope.data)
-            .width(attributes.width)
-            .height(attributes.height)
-            .thickness(attributes.thickness);
+      var lines =
+        d3.chart.lines()
+          .data([])
+          .width(attributes.width)
+          .height(attributes.height)
+          .thickness(attributes.thickness);
 
-        lines(lgroup);
-        lines.axis();
+      lines(lgroup);
+      lines.axis();
+
+      scope.$watch('data', function (value) {
+        if (value) {
+          lines.data(value);
+
+          lines.update();
+          lines.axis.update();
+        }
       });
     }
   };
-}]);
+});

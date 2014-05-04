@@ -55,16 +55,6 @@ d3.chart.lines = function () {
 
   chart.update = update;
 
-  chart.data = function (value) {
-    if (!arguments.length) {
-      return data;
-    }
-
-    data = value;
-
-    return chart;
-  };
-
   chart.axis = function () {
     g.append('g')
       .classed('xaxis axis', true)
@@ -98,6 +88,7 @@ d3.chart.lines = function () {
       .ticks(data.length);
 
     g.select('.xaxis')
+      .transition()
       .call(xAxis);
 
     var yAxis = d3.svg.axis()
@@ -106,10 +97,21 @@ d3.chart.lines = function () {
       .ticks(10);
 
     g.select('.yaxis')
+      .transition()
       .call(yAxis);
   }
 
   chart.axis.update = updateAxis;
+
+  chart.data = function (value) {
+    if (!arguments.length) {
+      return data;
+    }
+
+    data = value;
+
+    return chart;
+  };
 
   chart.width = function (value) {
     if (!arguments.length) {

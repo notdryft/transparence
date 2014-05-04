@@ -18,4 +18,5 @@ build
 dist/index.html
 dist/assets/css
 dist/assets/js
+dist/data
 dist/vendor

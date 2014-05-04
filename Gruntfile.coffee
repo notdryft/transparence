@@ -45,6 +45,7 @@ module.exports = (grunt) ->
           'app/assets/js/filters/*.js'
           'app/assets/js/factories/*.js'
           'app/assets/js/directives/*.js'
+          'app/assets/js/services/*.js'
           'app/assets/js/controllers/*.js'
         ]
         dest: 'dist/assets/js/transparence.js'
@@ -89,6 +90,9 @@ module.exports = (grunt) ->
         flatten: true
         src: ['**/angular.min.js.map', '**/jquery.min.map']
         dest: 'dist/vendor/js/'
+      data:
+        src: 'app/data/sample.json'
+        dest: 'dist/data/sample.json'
 
     shell:
       package:
