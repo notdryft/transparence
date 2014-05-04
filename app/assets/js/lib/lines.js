@@ -40,6 +40,7 @@ d3.chart.lines = function () {
       .range([_innerHeight, 0]);
 
     var line = d3.svg.line()
+      .interpolate('basis')
       .x(function (d, index) {
         return xScale(index) + xScale.rangeBand() / 2;
       })
@@ -138,7 +139,7 @@ d3.chart.lines = function () {
     }
 
     thickness = value;
-    _innerWidth = width - thickness * 3;
+    _innerWidth = width - thickness * 2 - 1;
     _innerHeight = height - thickness * 3;
 
     return chart;
