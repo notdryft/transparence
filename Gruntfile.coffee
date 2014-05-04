@@ -118,7 +118,9 @@ module.exports = (grunt) ->
 
   # Default task
 
-  grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify', 'less', 'preprocess:index', 'copy'])
-  grunt.registerTask('package', ['default', 'shell:package'])
+  grunt.registerTask('compile', ['clean', 'jshint', 'concat', 'uglify', 'less', 'preprocess:index', 'copy'])
+  grunt.registerTask('package', ['compile', 'shell:package'])
+
+  grunt.registerTask('default', ['compile'])
 
   return
