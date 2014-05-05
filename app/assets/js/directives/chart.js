@@ -5,14 +5,18 @@
 transparence.directive('chart', function () {
 
   return {
-    restrict: 'A',
+    restrict: 'C',
     scope: {
       data: '='
     },
 
     link: function (scope, element, attributes) {
-
-      var svg = d3.select(element[0]);
+      var svg = d3.select(element[0])
+        .append('svg')
+        .attr({
+          width: attributes.width,
+          height: attributes.height
+        });
 
       var lgroup = svg.append('g')
         .classed('lines-container', true);
