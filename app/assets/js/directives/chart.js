@@ -10,8 +10,8 @@ transparence.directive('chart', function () {
       data: '='
     },
 
-    link: function (scope, element, attributes) {
-      var svg = d3.select(element[0])
+    link: function (scope, elements, attributes) {
+      var svg = d3.select(elements[0])
         .append('svg')
         .attr({
           width: attributes.width,
