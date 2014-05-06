@@ -1,4 +1,4 @@
-/* global console, transparence */
+/* global transparence */
 
 'use strict';
 
