@@ -8,10 +8,6 @@ transparence.factory('Row', ['$rootScope', function ($rootScope) {
 
     return angular.extend(month, {
 
-      label: function () {
-        return 'Month ' + month.number;
-      },
-
       sales: function () {
         return $rootScope.taxFreeRate * month.workedDays;
       },

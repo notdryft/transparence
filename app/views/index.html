@@ -39,7 +39,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="row in rows">
-      <td>{{ row.label() }} ({{ row.millis | date: 'yyyy/MM' }})</td>
+      <td>{{ row.millis | date: 'MMMM yyyy' }}</td>
       <td class="text-right">{{ row.workedDays }}</td>
       <td class="text-right">{{ row.sales() | number: 2 }} &euro;</td>
       <td class="text-right">{{ row.taxFreeRate | number: 2 }} &euro;</td>
