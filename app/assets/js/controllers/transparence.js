@@ -1,29 +1,29 @@
-/* global transparence */
+/* global console, transparence */
 
 'use strict';
 
 transparence.controller('TransparenceController', ['$rootScope', '$scope', 'SpreadsheetService', 'Row', function ($rootScope, $scope, SpreadsheetService, Row) {
 
   function updateScope(data) {
-    var mensualSalary = data.mensualSalary;
-    var rate = data.rate;
-    var days = data.days;
-
-    $rootScope.mensualSalary = mensualSalary;
-    $rootScope.annualSalary = mensualSalary * 12;
-    $rootScope.taxFreeRate = rate * 0.9;
+    $rootScope.mensualSalary = data.mensualSalary;
+    $rootScope.annualSalary = data.mensualSalary * 12;
+    $rootScope.taxFreeRate = data.rate * 0.9;
 
     var rows = [];
-    for (var i = 0; i < days.length; i++) {
-      var day = days[i];
+    var currentMonth = new Date(data.startFrom);
+    for (var i = 0; i < data.days.length; i++) {
+      var day = data.days[i];
 
       rows.push(new Row({
         index: i,
+        millis: currentMonth.getTime(),
         number: i + 1,
-        workedDays: day,
+        rows: rows,
         taxFreeRate: (i === 0) ? 0 : $rootScope.taxFreeRate,
-        rows: rows
+        workedDays: day
       }));
+
+      currentMonth.setMonth(currentMonth.getMonth() + 1);
     }
 
     $scope.rows = rows;

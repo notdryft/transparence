@@ -27,9 +27,11 @@ d3.chart.lines = function () {
   }
 
   function update() {
-    var xScale = d3.scale.ordinal()
-      .domain(d3.range(data.length))
-      .rangeBands([0, _innerWidth]);
+    var xScale = d3.time.scale()
+      .domain(d3.extent(data, function (d) {
+        return d.millis;
+      }))
+      .range([0, _innerWidth]);
 
     var maxBonus = d3.max(data, function (d) {
       return d.bonus();
@@ -41,8 +43,8 @@ d3.chart.lines = function () {
 
     var line = d3.svg.line()
       .interpolate('basis')
-      .x(function (d, index) {
-        return xScale(index) + xScale.rangeBand() / 2;
+      .x(function (d) {
+        return xScale(d.millis);
       })
       .y(function (d) {
         return yScale(d.bonus());
@@ -67,12 +69,20 @@ d3.chart.lines = function () {
     updateAxis();
   };
 
+  function dateFormat(date) {
+    if (date.getMonth() === 0) {
+      return d3.time.format('%b %y')(date);
+    }
+
+    return d3.time.format('%b')(date);
+  }
+
   function updateAxis() {
-    var xScale = d3.scale.ordinal()
-      .domain(data.map(function (d) {
-        return d.number;
+    var xScale = d3.time.scale()
+      .domain(d3.extent(data, function (d) {
+        return d.millis;
       }))
-      .rangeBands([0, _innerWidth]);
+      .range([0, _innerWidth]);
 
     var maxBonus = d3.max(data, function (d) {
       return d.bonus();
@@ -85,7 +95,8 @@ d3.chart.lines = function () {
     var xAxis = d3.svg.axis()
       .scale(xScale)
       .orient('bottom')
-      .ticks(data.length);
+      .ticks(data.length)
+      .tickFormat(dateFormat);
 
     g.select('.xaxis')
       .transition()
@@ -141,7 +152,7 @@ d3.chart.lines = function () {
     }
 
     thickness = value;
-    _innerWidth = width - thickness * 2 - 1;
+    _innerWidth = width - thickness * 3 - 1;
     _innerHeight = height - thickness * 3;
 
     return chart;
