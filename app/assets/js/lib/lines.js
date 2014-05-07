@@ -69,7 +69,7 @@ d3.chart.lines = function () {
     updateAxis();
   };
 
-  function dateFormat(date) {
+  function _dateFormat(date) {
     if (date.getMonth() === 0) {
       return d3.time.format('%b %y')(date);
     }
@@ -77,7 +77,7 @@ d3.chart.lines = function () {
     return d3.time.format('%b')(date);
   }
 
-  function lineWrapIfContains(text, regex) {
+  function _lineWrapEachWordsIfContains(text, regex) {
     text.each(function () {
       var textNode = d3.select(this);
       var originalContent = textNode.text();
@@ -123,13 +123,13 @@ d3.chart.lines = function () {
       .scale(xScale)
       .orient('bottom')
       .ticks(data.length)
-      .tickFormat(dateFormat);
+      .tickFormat(_dateFormat);
 
     g.select('.xaxis')
       .transition()
       .call(xAxis)
       .selectAll('.tick text')
-      .call(lineWrapIfContains, /\s+/);
+      .call(_lineWrapEachWordsIfContains, /\s+/);
 
     var yAxis = d3.svg.axis()
       .scale(yScale)
