@@ -1,4 +1,4 @@
-/* global console, d3 */
+/* global d3 */
 
 'use strict';
 
