@@ -19,7 +19,7 @@ transparence.controller('TransparenceController', ['$rootScope', '$scope', 'Spre
         millis: currentMonth.getTime(),
         number: i + 1,
         rows: rows,
-        taxFreeRate: (i === 0) ? 0 : $rootScope.taxFreeRate,
+        taxFreeRate: i && $rootScope.taxFreeRate,
         workedDays: day
       }));
 
