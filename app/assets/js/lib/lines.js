@@ -1,4 +1,4 @@
-/* global d3 */
+/* global console, d3 */
 
 'use strict';
 
@@ -77,6 +77,33 @@ d3.chart.lines = function () {
     return d3.time.format('%b')(date);
   }
 
+  function lineWrapIfContains(text, regex) {
+    text.each(function () {
+      var textNode = d3.select(this);
+      var originalContent = textNode.text();
+
+      if (originalContent.match(regex)) {
+        var y = textNode.attr('y');
+        var dy = parseFloat(textNode.attr('dy'));
+
+        var words = originalContent.split(regex);
+
+        var content = textNode.text(null);
+        for (var i = 0; i < words.length; i++) {
+          var word = words[i];
+
+          content.append('tspan')
+            .attr({
+              x: 0,
+              y: y,
+              dy: i * 1.1 + dy + 'em'
+            })
+            .text(word);
+        }
+      }
+    });
+  }
+
   function updateAxis() {
     var xScale = d3.time.scale()
       .domain(d3.extent(data, function (d) {
@@ -100,7 +127,9 @@ d3.chart.lines = function () {
 
     g.select('.xaxis')
       .transition()
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll('.tick text')
+      .call(lineWrapIfContains, /\s+/);
 
     var yAxis = d3.svg.axis()
       .scale(yScale)
