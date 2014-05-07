@@ -77,7 +77,7 @@ d3.chart.lines = function () {
     return d3.time.format('%b')(date);
   }
 
-  function _lineWrapEachWordsIfContains(text, regex) {
+  function _lineWrapIfContains(text, regex) {
     text.each(function () {
       var textNode = d3.select(this);
       var originalContent = textNode.text();
@@ -129,7 +129,7 @@ d3.chart.lines = function () {
       .transition()
       .call(xAxis)
       .selectAll('.tick text')
-      .call(_lineWrapEachWordsIfContains, /\s+/);
+      .call(_lineWrapIfContains, /\s+/);
 
     var yAxis = d3.svg.axis()
       .scale(yScale)
