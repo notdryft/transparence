@@ -19,8 +19,20 @@ d3.chart.lines = function () {
   function chart(container) {
     g = container;
 
+    // chart
+
     g.append('g')
       .classed('lines', true)
+      .attr('transform', 'translate(' + [thickness * 2, thickness] + ')');
+
+    // axis
+
+    g.append('g')
+      .classed('xaxis axis', true)
+      .attr('transform', 'translate(' + [thickness * 2, height - thickness * 2] + ')');
+
+    g.append('g')
+      .classed('yaxis axis', true)
       .attr('transform', 'translate(' + [thickness * 2, thickness] + ')');
 
     update();
@@ -41,6 +53,11 @@ d3.chart.lines = function () {
       .domain([0, maxBonus])
       .range([_innerHeight, 0]);
 
+    _updateChart(xScale, yScale);
+    _updateAxis(xScale, yScale);
+  }
+
+  function _updateChart(xScale, yScale) {
     var line = d3.svg.line()
       .interpolate('basis')
       .x(function (d) {
@@ -55,20 +72,6 @@ d3.chart.lines = function () {
       .attr('d', line(data));
   }
 
-  chart.update = update;
-
-  chart.axis = function () {
-    g.append('g')
-      .classed('xaxis axis', true)
-      .attr('transform', 'translate(' + [thickness * 2, height - thickness * 2] + ')');
-
-    g.append('g')
-      .classed('yaxis axis', true)
-      .attr('transform', 'translate(' + [thickness * 2, thickness] + ')');
-
-    updateAxis();
-  };
-
   function _dateFormat(date) {
     if (date.getMonth() === 0) {
       return d3.time.format('%b %y')(date);
@@ -77,7 +80,7 @@ d3.chart.lines = function () {
     return d3.time.format('%b')(date);
   }
 
-  function _lineWrapIfContains(text, regex) {
+  function _lineWrapIfMatch(text, regex) {
     text.each(function () {
       var textNode = d3.select(this);
       var originalContent = textNode.text();
@@ -104,21 +107,7 @@ d3.chart.lines = function () {
     });
   }
 
-  function updateAxis() {
-    var xScale = d3.time.scale()
-      .domain(d3.extent(data, function (d) {
-        return d.millis;
-      }))
-      .range([0, _innerWidth]);
-
-    var maxBonus = d3.max(data, function (d) {
-      return d.bonus();
-    });
-
-    var yScale = d3.scale.linear()
-      .domain([0, maxBonus])
-      .range([_innerHeight, 0]);
-
+  function _updateAxis(xScale, yScale) {
     var xAxis = d3.svg.axis()
       .scale(xScale)
       .orient('bottom')
@@ -129,7 +118,7 @@ d3.chart.lines = function () {
       .transition()
       .call(xAxis)
       .selectAll('.tick text')
-      .call(_lineWrapIfContains, /\s+/);
+      .call(_lineWrapIfMatch, /\s+/);
 
     var yAxis = d3.svg.axis()
       .scale(yScale)
@@ -141,7 +130,7 @@ d3.chart.lines = function () {
       .call(yAxis);
   }
 
-  chart.axis.update = updateAxis;
+  chart.update = update;
 
   chart.data = function (value) {
     if (!arguments.length) {

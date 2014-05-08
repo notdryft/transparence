@@ -29,14 +29,12 @@ transparence.directive('chart', function () {
           .thickness(attributes.thickness);
 
       lines(lgroup);
-      lines.axis();
 
       scope.$watch('data', function (value) {
         if (value) {
           lines.data(value);
 
           lines.update();
-          lines.axis.update();
         }
       });
     }
