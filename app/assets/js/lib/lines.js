@@ -19,21 +19,23 @@ d3.chart.lines = function () {
   function chart(container) {
     g = container;
 
+    var twice = thickness * 2;
+
     // chart
 
     g.append('g')
       .classed('lines', true)
-      .attr('transform', 'translate(' + [thickness * 2, thickness] + ')');
+      .attr('transform', 'translate(' + [twice, thickness] + ')');
 
     // axis
 
     g.append('g')
       .classed('xaxis axis', true)
-      .attr('transform', 'translate(' + [thickness * 2, height - thickness * 2] + ')');
+      .attr('transform', 'translate(' + [twice, height - twice] + ')');
 
     g.append('g')
       .classed('yaxis axis', true)
-      .attr('transform', 'translate(' + [thickness * 2, thickness] + ')');
+      .attr('transform', 'translate(' + [twice, thickness] + ')');
 
     update();
   }
