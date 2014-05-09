@@ -28,8 +28,9 @@ module.exports = (grunt) ->
     jshint:
       all: [
         'Gruntfile.js'
+        'karma.conf.js'
         'app/assets/js/**/*.js'
-        'test/**/*.js'
+        'test/unit//**/*.js'
       ]
       options:
         globalstrict: true
