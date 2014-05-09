@@ -95,6 +95,13 @@ module.exports = (grunt) ->
         src: 'app/data/sample.json'
         dest: 'dist/data/sample.json'
 
+    karma:
+      unit:
+        options:
+          autoWatch: false
+          singleRun: true
+          configFile: 'karma.conf.js'
+
     shell:
       package:
         command: 'tar cvzf <%= pkg.name %>-<%= pkg.version %>.tar.gz dist && mkdir build && mv *.tar.gz build'
@@ -118,12 +125,14 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-less')
   grunt.loadNpmTasks('grunt-preprocess')
   grunt.loadNpmTasks('grunt-contrib-copy')
+  grunt.loadNpmTasks('grunt-karma')
   grunt.loadNpmTasks('grunt-shell')
   grunt.loadNpmTasks('grunt-contrib-connect')
 
   # Default task
 
   grunt.registerTask('compile', ['clean', 'jshint', 'concat', 'uglify', 'less', 'preprocess:index', 'copy'])
+  grunt.registerTask('test', ['karma'])
   grunt.registerTask('package', ['compile', 'shell:package'])
 
   grunt.registerTask('default', ['compile'])
