@@ -30,7 +30,7 @@ module.exports = (grunt) ->
         'Gruntfile.js'
         'karma.conf.js'
         'app/assets/js/**/*.js'
-        'test/unit//**/*.js'
+        'test/unit/**/*.js'
       ]
       options:
         globalstrict: true
