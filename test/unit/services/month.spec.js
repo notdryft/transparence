@@ -48,7 +48,6 @@ describe('MonthService', function () {
     var daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     var daysInMonth = use(MonthService.daysInMonth);
-
     daysInMonth.startFrom(new Date(2011, 0))
       .expect(daysPerMonth);
     daysInMonth.startFrom(new Date(2013, 0))
