@@ -19,19 +19,15 @@ module.exports = function (config) {
       'bower_components/bootstrap/dist/js/bootstrap.min.js',
       'bower_components/angular/angular.min.js',
       'bower_components/d3/d3.min.js',
-      // libraries
+      // tests dependencies
+      'bower_components/angular-mocks/angular-mocks.js',
+      // application
       'app/assets/js/lib/*.js',
-      // application bootstrap
       'app/assets/js/bootstrap.js',
-      // javascripts
       'app/assets/js/directives/*.js',
       'app/assets/js/factories/*.js',
       'app/assets/js/services/*.js',
       'app/assets/js/controllers/*.js',
-      // html
-      'dist/index.html',
-      // tests dependencies
-      'bower_components/angular-mocks/angular-mocks.js',
       // tests
       'test/**/*.spec.js'
     ],
