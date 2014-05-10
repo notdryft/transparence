@@ -3,7 +3,8 @@
 var fixtures = {
   date: {
     sample: {
-      days: [5, 6, 7, 8, 9, 10, 11]
+      days: [5, 6, 7, 8, 9, 10, 11],
+      easterYears: [2006, 2014, 2015, 2016]
     },
     expected: {
       days: function (value) {
@@ -11,6 +12,7 @@ var fixtures = {
       },
       daysPerMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       daysPerMonthOnLeapYear: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+      easterDays: ['2006/04/17', '2014/04/21', '2015/04/06', '2016/03/28'],
       publicHolidays: [0, 2, 1, 1, 0, 0, 1, 3, 1, 1, 1, 0, 0, 0, 1],
       weekDays: [23, 19, 21, 22, 20, 21, 21, 19, 20, 22, 20, 22, 23, 20, 22]
     }

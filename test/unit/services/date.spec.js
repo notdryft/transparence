@@ -65,6 +65,20 @@ describe('DateService', function () {
       .expect(fixtures.date.expected.days);
   });
 
+  it('should compute fixed easter day for any year', function () {
+    var sample = fixtures.date.sample.easterYears;
+    var expected = fixtures.date.expected.easterDays;
+
+    expect(sample.length).toBe(expected.length);
+    for (var i = 0; i < sample.length; i++) {
+      var easterDay = DateService.easterDay(sample[i]);
+      var expectation = new Date(expected[i]);
+
+      expect(easterDay.getMonth()).toBe(expectation.getMonth());
+      expect(easterDay.getDate()).toBe(expectation.getDate());
+    }
+  });
+
   it('should compute business days in months', function () {
     var weekDays = fixtures.date.expected.weekDays;
     var publicHolidays = fixtures.date.expected.publicHolidays;
