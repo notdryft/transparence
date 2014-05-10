@@ -2,21 +2,12 @@
 
 'use strict';
 
-transparence.service('SpreadsheetService', ['$q', '$http', '$timeout', function ($q, $http, $timeout) {
+transparence.service('SpreadsheetService', ['$http', function ($http) {
 
-  this.read = function (path) {
-    var deferred = $q.defer();
+  var me = this;
 
-    $http.get(path)
-      .success(function (data) {
-        $timeout(function () { // to test deferring
-          deferred.resolve(data);
-        }, 1000);
-      })
-      .error(function (data) {
-        deferred.reject(data);
-      });
+  me.read = function (path) {
 
-    return deferred.promise;
+    return $http.get(path);
   };
 }]);

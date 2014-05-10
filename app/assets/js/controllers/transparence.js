@@ -29,6 +29,9 @@ transparence.controller('TransparenceController', ['$rootScope', '$scope', 'Spre
     $scope.rows = rows;
   }
 
-  var promise = SpreadsheetService.read('../data/sample.json');
-  promise.then(updateScope);
+  SpreadsheetService
+    .read('/data/sample.json')
+    .then(function (d) {
+      updateScope(d.data);
+    });
 }]);
