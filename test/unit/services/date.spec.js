@@ -65,7 +65,7 @@ describe('DateService', function () {
       .expect(fixtures.date.expected.days);
   });
 
-  it('should compute fixed easter day for any year', function () {
+  it('should compute easter day for any year', function () {
     var sample = fixtures.date.sample.easterYears;
     var expected = fixtures.date.expected.easterDays;
 
