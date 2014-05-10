@@ -8,8 +8,8 @@ describe('MonthService', function () {
 
   beforeEach(module('Transparence'));
 
-  beforeEach(inject(function (_MonthService_) {
-    MonthService = _MonthService_;
+  beforeEach(inject(function ($injector) {
+    MonthService = $injector.get('MonthService');
   }));
 
   it('should contain a month service', function () {
