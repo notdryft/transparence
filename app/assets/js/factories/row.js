@@ -2,35 +2,22 @@
 
 'use strict';
 
-transparence.factory('Row', ['$rootScope', function ($rootScope) {
+transparence.factory('Row', function () {
 
-  return function (month) {
+  return function (row) {
 
-    return angular.extend(month, {
+    return angular.extend(row, {
 
       sales: function () {
-        return $rootScope.taxFreeRate * month.workedDays;
+        return row.taxFreeRate * row.workedDays;
       },
 
       delta: function () {
-        return this.sales() * 0.6 - 1.58 * $rootScope.mensualSalary;
+        return this.sales() * 0.6 - 1.58 * this.spreadsheet.salary.mensual;
       },
 
       mean: function () {
-        if (month.index === 0) {
-          return 0;
-        }
-
-        var start = month.index - 6;
-        start = (start < 0) ? 0 : start;
-
-        var sum = 0;
-        var availableRows = this.rows.slice(start, month.index);
-        for (var i = 0; i < availableRows.length; i++) {
-          sum += availableRows[i].delta();
-        }
-
-        return sum / availableRows.length;
+        return this.spreadsheet.mean(this.index);
       },
 
       bonus: function () {
@@ -38,4 +25,4 @@ transparence.factory('Row', ['$rootScope', function ($rootScope) {
       }
     });
   };
-}]);
+});

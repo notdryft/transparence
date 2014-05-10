@@ -21,15 +21,18 @@ module.exports = function (config) {
       'bower_components/d3/d3.min.js',
       // tests dependencies
       'bower_components/angular-mocks/angular-mocks.js',
-      // application
+      // librairies
       'app/assets/js/lib/*.js',
+      // application
       'app/assets/js/bootstrap.js',
       'app/assets/js/directives/*.js',
       'app/assets/js/factories/*.js',
       'app/assets/js/services/*.js',
       'app/assets/js/controllers/*.js',
+      // fixtures
+      'test/unit/fixtures/fixtures.js',
       // tests
-      'test/**/*.spec.js'
+      'test/unit/services/*.spec.js'
     ],
 
     exclude: [],

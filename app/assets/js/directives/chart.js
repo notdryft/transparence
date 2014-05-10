@@ -32,7 +32,7 @@ transparence.directive('chart', function () {
 
       scope.$watch('data', function (value) {
         if (value) {
-          lines.data(value);
+          lines.data(value.rows);
 
           lines.update();
         }

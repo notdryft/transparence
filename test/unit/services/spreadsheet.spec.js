@@ -1,4 +1,4 @@
-/* global console, module, describe, it, beforeEach, afterEach, inject, expect */
+/* global fixtures, module, describe, it, beforeEach, afterEach, inject, expect */
 
 'use strict';
 
@@ -27,13 +27,14 @@ describe('SpreadsheetService', function () {
     expect(SpreadsheetService).not.toEqual(null);
   });
 
+  var path = '/data/sample.json';
+
   it('should return json content when read', function (done) {
-    var path = '/data/sample.json';
     var message = {
       key: 'value'
     };
 
-    $httpBackend.expect('GET', path)
+    $httpBackend.expectGET(path)
       .respond(200, message);
 
     SpreadsheetService.read(path)
@@ -43,5 +44,24 @@ describe('SpreadsheetService', function () {
       .finally(done);
 
     $httpBackend.flush();
+  });
+
+  it('should compute json data correctly', function () {
+    var spreadsheet = SpreadsheetService.compute(fixtures.sample);
+    var expected = fixtures.expected;
+
+    expect(spreadsheet.salary.annual).toBe(expected.salary.annual);
+    expect(spreadsheet.salary.taxFreeRate).toBe(expected.salary.taxFreeRate);
+
+    expect(spreadsheet.rows.length).toBe(expected.rows.length);
+    for (var i = 0; i < spreadsheet.rows.length; i++) {
+      var row = spreadsheet.rows[i];
+      var expectedRow = expected.rows[i];
+
+      expect(Math.round(row.sales())).toBe(expectedRow.sales);
+      expect(Math.round(row.delta())).toBe(expectedRow.delta);
+      expect(Math.round(row.mean())).toBe(expectedRow.mean);
+      expect(Math.round(row.bonus())).toBe(expectedRow.bonus);
+    }
   });
 });

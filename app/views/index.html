@@ -23,7 +23,7 @@
 <div class="container" ng-controller="TransparenceController">
 
   <div class="head">
-    <div class="chart" width="768" height="432" thickness="30" data="rows"></div>
+    <div class="chart" width="768" height="432" thickness="30" data="spreadsheet"></div>
   </div>
   <table class="table table-striped">
     <thead>
@@ -38,7 +38,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="row in rows">
+    <tr ng-repeat="row in spreadsheet.rows">
       <td>{{ row.millis | date: 'MMMM yyyy' }}</td>
       <td class="text-right">{{ row.workedDays }}</td>
       <td class="text-right">{{ row.sales() | number: 2 }} &euro;</td>
