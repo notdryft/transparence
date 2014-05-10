@@ -7,12 +7,10 @@ transparence.service('SpreadsheetService', ['$http', 'Spreadsheet', function ($h
   var me = this;
 
   me.read = function (path) {
-
     return $http.get(path);
   };
 
   me.compute = function (data) {
-
     return new Spreadsheet(data);
   };
 }]);
