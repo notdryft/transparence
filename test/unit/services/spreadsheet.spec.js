@@ -47,8 +47,8 @@ describe('SpreadsheetService', function () {
   });
 
   it('should compute json data correctly', function () {
-    var spreadsheet = SpreadsheetService.compute(fixtures.sample);
-    var expected = fixtures.expected;
+    var spreadsheet = SpreadsheetService.compute(fixtures.spreadsheet.sample);
+    var expected = fixtures.spreadsheet.expected;
 
     expect(spreadsheet.salary.annual).toBe(expected.salary.annual);
     expect(spreadsheet.salary.taxFreeRate).toBe(expected.salary.taxFreeRate);

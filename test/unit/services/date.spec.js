@@ -1,19 +1,19 @@
-/* global module, describe, it, beforeEach, inject, expect */
+/* global fixtures, module, describe, it, beforeEach, inject, expect */
 
 'use strict';
 
-describe('MonthService', function () {
+describe('DateService', function () {
 
-  var MonthService;
+  var DateService;
 
   beforeEach(module('Transparence'));
 
   beforeEach(inject(function ($injector) {
-    MonthService = $injector.get('MonthService');
+    DateService = $injector.get('DateService');
   }));
 
   it('should contain a month service', function () {
-    expect(MonthService).not.toEqual(null);
+    expect(DateService).not.toEqual(null);
   });
 
   function use(fn) {
@@ -45,9 +45,9 @@ describe('MonthService', function () {
   }
 
   it('should compute days in month', function () {
-    var daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var daysPerMonth = fixtures.date.sample.daysPerMonth;
 
-    var daysInMonth = use(MonthService.daysInMonth);
+    var daysInMonth = use(DateService.daysInMonth);
     daysInMonth.startFrom(new Date(2011, 0))
       .expect(daysPerMonth);
     daysInMonth.startFrom(new Date(2013, 0))
@@ -59,26 +59,23 @@ describe('MonthService', function () {
   });
 
   it('should compute week days', function () {
-    var days = [5, 6, 7, 8, 9, 10, 11];
-    var expected = function (value) {
-      return value !== 10 && value !== 11;
-    };
+    var days = fixtures.date.sample.days;
 
-    use(MonthService.isWeekDay)
+    use(DateService.isWeekDay)
       .startFrom(new Date(2014, 4), days)
-      .expect(expected);
+      .expect(fixtures.date.expected.days);
   });
 
   it('should compute business days in months', function () {
-    var weekDays = [23, 19, 21, 22, 20, 21, 21, 19, 20, 22, 20, 22, 23, 20, 22];
-    var publicHolidays = [0, 2, 1, 1, 0, 0, 1, 3, 1, 1, 1, 0, 0, 0, 1];
+    var weekDays = fixtures.date.expected.weekDays;
+    var publicHolidays = fixtures.date.expected.publicHolidays;
 
     var businessDays = [];
     for (var i = 0; i < weekDays.length; i++) {
       businessDays[i] = weekDays[i] + publicHolidays[i]; // should be minus
     }
 
-    use(MonthService.businessDaysInMonth)
+    use(DateService.businessDaysInMonth)
       .startFrom(new Date(2013, 9))
       .expect(businessDays);
   });

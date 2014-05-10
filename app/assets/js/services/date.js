@@ -2,7 +2,7 @@
 
 'use strict';
 
-transparence.service('MonthService', function () {
+transparence.service('DateService', function () {
 
   var me = this;
 
