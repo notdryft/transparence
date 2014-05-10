@@ -2,7 +2,7 @@
 
 'use strict';
 
-transparence.service('SpreadsheetService', ['$http', '$timeout', function ($http, $timeout) {
+transparence.service('SpreadsheetService', ['$http', function ($http) {
 
   var me = this;
 
