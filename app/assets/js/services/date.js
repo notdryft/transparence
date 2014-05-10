@@ -53,6 +53,9 @@ transparence.service('DateService', function () {
     var m = int(mj / 31);
     var j = mj % 31;
 
+    // Easter day    = j + 2
+    // Ascension day = j + 40
+    // Whit monday   = j + 51
     return new Date(year, m - 1, j + 2);
   };
 
