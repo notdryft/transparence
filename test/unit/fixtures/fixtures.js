@@ -4,12 +4,13 @@ var fixtures = {
   date: {
     sample: {
       days: [5, 6, 7, 8, 9, 10, 11],
-      daysPerMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     },
     expected: {
       days: function (value) {
         return value !== 10 && value !== 11;
       },
+      daysPerMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+      daysPerMonthOnLeapYear: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       publicHolidays: [0, 2, 1, 1, 0, 0, 1, 3, 1, 1, 1, 0, 0, 0, 1],
       weekDays: [23, 19, 21, 22, 20, 21, 21, 19, 20, 22, 20, 22, 23, 20, 22]
     }

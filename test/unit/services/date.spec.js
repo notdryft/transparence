@@ -45,16 +45,15 @@ describe('DateService', function () {
   }
 
   it('should compute days in month', function () {
-    var daysPerMonth = fixtures.date.sample.daysPerMonth;
+    var daysPerMonth = fixtures.date.expected.daysPerMonth;
+    var daysPerMonthOnLeapYear = fixtures.date.expected.daysPerMonthOnLeapYear;
 
     var daysInMonth = use(DateService.daysInMonth);
     daysInMonth.startFrom(new Date(2011, 0))
       .expect(daysPerMonth);
-    daysInMonth.startFrom(new Date(2013, 0))
-      .expect(daysPerMonth);
-
-    daysPerMonth[1] = 29;
     daysInMonth.startFrom(new Date(2012, 0))
+      .expect(daysPerMonthOnLeapYear);
+    daysInMonth.startFrom(new Date(2013, 0))
       .expect(daysPerMonth);
   });
 
