@@ -3,7 +3,7 @@
 var fixtures = {
   date: {
     sample: {
-      days: [5, 6, 7, 8, 9, 10, 11],
+      days: [5, 6, 7, 8, 9, 10, 11]
     },
     expected: {
       days: function (value) {
