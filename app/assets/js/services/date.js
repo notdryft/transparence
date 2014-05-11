@@ -6,6 +6,8 @@ transparence.service('DateService', function () {
 
   var me = this;
 
+  var _publicHolidaysCache = {};
+
   function _copyDate(date, dayInMonth) {
     return new Date(date.getFullYear(), date.getMonth(), dayInMonth);
   }
@@ -24,7 +26,7 @@ transparence.service('DateService', function () {
   };
 
   // See http://fr.wikipedia.org/wiki/Calcul_de_la_date_de_P%C3%A2ques_selon_la_m%C3%A9thode_de_Meeus
-  me.easterDay = function (year) {
+  me.easterDayInYear = function (year) {
     var int = Math.floor;
 
     // Cycle de Méton
@@ -59,6 +61,39 @@ transparence.service('DateService', function () {
     return new Date(year, m - 1, j + 2);
   };
 
+  function zeros(n) {
+    var array = [];
+    for (var i = 0; i < n; i++) {
+      array[i] = 0;
+    }
+
+    return array;
+  }
+
+  me.publicHolidaysInYear = function (year) {
+    var months = [0, 4, 4, 6, 7, 10, 10, 11];
+    var days = [1, 1, 8, 14, 15, 1, 11, 25];
+
+    var publicHolidays = zeros(12);
+    for (var i = 0; i < months.length; i++) {
+      var date = new Date(year, months[i]);
+
+      if (me.isWeekDay(date, days[i])) {
+        publicHolidays[months[i]] += 1;
+      }
+    }
+
+    var easterDay = me.easterDayInYear(year);
+    var ascensionDay = new Date(year, easterDay.getMonth(), easterDay.getDate() + 38);
+    var whitMonday = new Date(year, easterDay.getMonth(), easterDay.getDate() + 49);
+
+    publicHolidays[easterDay.getMonth()] += 1;
+    publicHolidays[ascensionDay.getMonth()] += 1;
+    publicHolidays[whitMonday.getMonth()] += 1;
+
+    return publicHolidays;
+  };
+
   me.businessDaysInMonth = function (date) {
     var businessDays = 0;
     var days = me.daysInMonth(date);
@@ -68,6 +103,11 @@ transparence.service('DateService', function () {
       }
     }
 
-    return businessDays;
+    var year = date.getFullYear();
+    if (!_publicHolidaysCache[year]) {
+      _publicHolidaysCache[year] = me.publicHolidaysInYear(year);
+    }
+
+    return businessDays - _publicHolidaysCache[year][date.getMonth()];
   };
 });
