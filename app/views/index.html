@@ -39,7 +39,7 @@
     </thead>
     <tbody>
     <tr ng-repeat="row in spreadsheet.rows">
-      <td>{{ row.millis | date: 'MMMM yyyy' }}</td>
+      <td>{{ row.millis | date: 'MMMM' }}<span>{{ row.millis | date: 'yyyy' }}</span></td>
       <td class="text-right">{{ row.workedDays }}</td>
       <td class="text-right">{{ row.sales() | number: 2 }} &euro;</td>
       <td class="text-right">{{ row.taxFreeRate | number: 2 }} &euro;</td>
