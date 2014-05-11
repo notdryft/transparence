@@ -133,7 +133,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask('compile', ['clean', 'jshint', 'concat', 'uglify', 'less', 'preprocess:index', 'copy'])
   grunt.registerTask('test', ['compile', 'karma'])
-  grunt.registerTask('package', ['compile', 'shell:package'])
+  grunt.registerTask('package', ['test', 'shell:package'])
 
   grunt.registerTask('default', ['compile'])
 
