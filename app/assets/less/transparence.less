@@ -34,7 +34,14 @@
 
   .table td span {
     color: #aaa;
-    display: block;
-    font-size: 90%
+
+    &.below {
+      display: block;
+      font-size: 90%
+    }
+
+    &.follow:before {
+      content: ' / '
+    }
   }
 }
