@@ -2,18 +2,18 @@
 
 'use strict';
 
-describe('DateService', function () {
+describe('Days service', function () {
 
-  var DateService;
+  var DaysService;
 
   beforeEach(module('Transparence'));
 
   beforeEach(inject(function ($injector) {
-    DateService = $injector.get('DateService');
+    DaysService = $injector.get('DaysService');
   }));
 
-  it('should contain a month service', function () {
-    expect(DateService).not.toEqual(null);
+  it('should exist', function () {
+    expect(DaysService).not.toEqual(null);
   });
 
   function use(fn) {
@@ -45,7 +45,7 @@ describe('DateService', function () {
   }
 
   function _checkDaysInMonth(year, daysPerMonth) {
-    use(DateService.daysInMonth)
+    use(DaysService.daysInMonth)
       .startFrom(new Date(year, 0))
       .expect(daysPerMonth);
   }
@@ -62,7 +62,7 @@ describe('DateService', function () {
   it('should compute week days', function () {
     var days = fixtures.date.sample.days;
 
-    use(DateService.isWeekDay)
+    use(DaysService.isWeekDay)
       .startFrom(new Date(2014, 4), days)
       .expect(fixtures.date.expected.days);
   });
@@ -73,7 +73,7 @@ describe('DateService', function () {
 
     expect(sample.length).toBe(expected.length);
     for (var i = 0; i < sample.length; i++) {
-      var easterDay = DateService.easterDayInYear(sample[i]);
+      var easterDay = DaysService.easterDayInYear(sample[i]);
       var expectation = new Date(expected[i]);
 
       expect(easterDay.getMonth()).toBe(expectation.getMonth());
@@ -82,7 +82,7 @@ describe('DateService', function () {
   });
 
   function _checkPublicHolidays(year, expected) {
-    var publicHolidays = DateService.publicHolidaysInYear(year);
+    var publicHolidays = DaysService.publicHolidaysInYear(year);
 
     expect(publicHolidays.length).toBe(expected.length);
     for (var i = 0; i < publicHolidays.length; i++) {
@@ -105,7 +105,7 @@ describe('DateService', function () {
       businessDays[i] = weekDays[i] - publicHolidays[i];
     }
 
-    use(DateService.businessDaysInMonth)
+    use(DaysService.businessDaysInMonth)
       .startFrom(new Date(year, 0))
       .expect(businessDays);
   }

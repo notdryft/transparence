@@ -2,7 +2,7 @@
 
 'use strict';
 
-describe('SpreadsheetService', function () {
+describe('Spreadsheet service', function () {
 
   var $httpBackend;
   var $timeout;

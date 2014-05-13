@@ -2,7 +2,7 @@
 
 'use strict';
 
-transparence.service('DateService', function () {
+transparence.service('DaysService', function () {
 
   var me = this;
 
@@ -34,7 +34,7 @@ transparence.service('DateService', function () {
     // Centaine et range de l'année
     var c = int(year / 100);
     var u = year % 100;
-    // Sicèle bissextil
+    // Siècle bissextil
     var s = int(c / 4);
     var t = c % 4;
     // Proemptose
