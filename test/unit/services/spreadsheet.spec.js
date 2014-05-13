@@ -23,7 +23,7 @@ describe('SpreadsheetService', function () {
     }, 0);
   });
 
-  it('should contain a spreadsheet service', function () {
+  it('should exist', function () {
     expect(SpreadsheetService).not.toEqual(null);
   });
 

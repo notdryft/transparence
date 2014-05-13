@@ -32,6 +32,7 @@ module.exports = function (config) {
       // fixtures
       'test/unit/fixtures/fixtures.js',
       // tests
+      'test/unit/factories/*.spec.js',
       'test/unit/services/*.spec.js',
       'test/unit/controllers/*.spec.js'
     ],
