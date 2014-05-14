@@ -2,7 +2,7 @@
 
 'use strict';
 
-transparence.controller('TransparenceController', ['$scope', 'DateService', 'SpreadsheetService', function ($scope, DateService, SpreadsheetService) {
+transparence.controller('TransparenceController', ['$scope', 'DaysService', 'SpreadsheetService', function ($scope, DaysService, SpreadsheetService) {
 
   function updateScope(data) {
     $scope.spreadsheet = SpreadsheetService.compute(data);
@@ -10,7 +10,7 @@ transparence.controller('TransparenceController', ['$scope', 'DateService', 'Spr
     for (var i = 0; i < $scope.spreadsheet.rows.length; i++) {
       var row = $scope.spreadsheet.rows[i];
 
-      row.businessDays = DateService.businessDaysInMonth(new Date(row.millis));
+      row.businessDays = DaysService.businessDaysInMonth(new Date(row.millis));
     }
   }
 
