@@ -2,14 +2,14 @@
 
 'use strict';
 
-transparence.factory('Row', function () {
+transparence.factory('Month', function () {
 
-  return function (row) {
+  return function (month) {
 
-    return angular.extend(row, {
+    return angular.extend(month, {
 
       sales: function () {
-        return row.taxFreeRate * row.workedDays;
+        return month.taxFreeRate * month.workedDays;
       },
 
       delta: function () {
@@ -17,7 +17,7 @@ transparence.factory('Row', function () {
       },
 
       mean: function () {
-        return this.spreadsheet.mean(this.index);
+        return this.sheet.mean(this.index);
       },
 
       bonus: function () {

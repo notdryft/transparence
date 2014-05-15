@@ -46,22 +46,42 @@ describe('Spreadsheet service', function () {
     $httpBackend.flush();
   });
 
+  function _checkFixturesConsistency(sample, expected) {
+    expect(sample.simulations.length).toBe(expected.sheets.length);
+    for (var i = 0; i < sample.simulations.length; i++) {
+      expect(sample.simulations[i].workedDays.length)
+        .toBe(expected.sheets[i].months.length);
+    }
+  }
+
   it('should compute json data correctly', function () {
-    var spreadsheet = SpreadsheetService.compute(fixtures.spreadsheet.sample);
+    var sample = fixtures.spreadsheet.sample;
     var expected = fixtures.spreadsheet.expected;
+    _checkFixturesConsistency(sample, expected);
 
-    expect(spreadsheet.salary.annual).toBe(expected.salary.annual);
-    expect(spreadsheet.salary.taxFreeRate).toBe(expected.salary.taxFreeRate);
+    var spreadsheet = SpreadsheetService.compute(sample.commons);
+    expect(spreadsheet.salary.annual).toBe(expected.commons.salary.annual);
+    expect(spreadsheet.salary.taxFreeRate).toBe(expected.commons.salary.taxFreeRate);
 
-    expect(spreadsheet.rows.length).toBe(expected.rows.length);
-    for (var i = 0; i < spreadsheet.rows.length; i++) {
-      var row = spreadsheet.rows[i];
-      var expectedRow = expected.rows[i];
+    for (var i = 0; i < sample.simulations.length; i++) {
+      var simulation = sample.simulations[i];
+      var expectedSheet = expected.sheets[i];
 
-      expect(Math.round(row.sales())).toBe(expectedRow.sales);
-      expect(Math.round(row.delta())).toBe(expectedRow.delta);
-      expect(Math.round(row.mean())).toBe(expectedRow.mean);
-      expect(Math.round(row.bonus())).toBe(expectedRow.bonus);
+      var sheet = spreadsheet.createSheet(i);
+      expect(sheet.monthCount()).toBe(0);
+
+      spreadsheet.updateSheet(i, simulation);
+      expect(sheet.monthCount()).toBe(simulation.workedDays.length);
+
+      for (var j = 0; j < sheet.monthCount(); j++) {
+        var month = sheet.monthAt(j);
+
+        var expectedMonth = expectedSheet.months[j];
+        expect(Math.round(month.sales())).toBe(expectedMonth.sales);
+        expect(Math.round(month.delta())).toBe(expectedMonth.delta);
+        expect(Math.round(month.mean())).toBe(expectedMonth.mean);
+        expect(Math.round(month.bonus())).toBe(expectedMonth.bonus);
+      }
     }
   });
 });

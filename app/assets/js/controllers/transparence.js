@@ -5,13 +5,17 @@
 transparence.controller('TransparenceController', ['$scope', 'DaysService', 'SpreadsheetService', function ($scope, DaysService, SpreadsheetService) {
 
   function updateScope(data) {
-    $scope.spreadsheet = SpreadsheetService.compute(data);
+    var spreadsheet = SpreadsheetService.compute(data.commons);
 
-    for (var i = 0; i < $scope.spreadsheet.rows.length; i++) {
-      var row = $scope.spreadsheet.rows[i];
+    var sheet = spreadsheet.createSheet(0);
+    sheet.update(data.simulations[0]);
+    for (var i = 0; i < sheet.monthCount(); i++) {
+      var month = sheet.monthAt(i);
 
-      row.businessDays = DaysService.businessDaysInMonth(new Date(row.millis));
+      month.businessDays = DaysService.businessDaysInMonth(new Date(month.millis));
     }
+
+    $scope.spreadsheet = spreadsheet;
   }
 
   SpreadsheetService

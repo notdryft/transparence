@@ -10,7 +10,7 @@ transparence.service('SpreadsheetService', ['$http', 'Spreadsheet', function ($h
     return $http.get(path);
   };
 
-  me.compute = function (data) {
-    return new Spreadsheet(data);
+  me.compute = function (commons) {
+    return new Spreadsheet(commons);
   };
 }]);
