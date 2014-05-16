@@ -5,18 +5,15 @@ module.exports = (grunt) ->
 
     pkg: grunt.file.readJSON('package.json')
 
-    env:
-      development:
-        NODE_ENV: 'development'
-      production:
-        NODE_ENV: 'production'
-
     clean:
+      after:
+        src: 'dist/assets/js/transparence.js'
       all:
         src: [
           'dist/index.html'
           'dist/assets/css'
           'dist/assets/js'
+          'dist/data'
           'dist/vendor'
         ]
       package:
@@ -78,25 +75,70 @@ module.exports = (grunt) ->
         dest: 'dist/index.html'
 
     copy:
-      css:
-        expand: true
-        flatten: true
-        src: 'bower_components/**/*.min.css'
-        dest: 'dist/vendor/css/'
-      js:
-        expand: true
-        flatten: true
-        src: ['bower_components/**/*.min.js', '!**/sizzle.min.js']
-        dest: 'dist/vendor/js/'
-      map:
-        cwd: 'bower_components/'
-        expand: true
-        flatten: true
-        src: ['**/angular.min.js.map', '**/jquery.min.map']
-        dest: 'dist/vendor/js/'
-      data:
-        src: 'app/data/sample.json'
-        dest: 'dist/data/sample.json'
+      development:
+        files: [
+          # css
+          {
+            expand: true
+            flatten: true
+            src: 'bower_components/**/*.min.css'
+            dest: 'dist/vendor/css/'
+          }
+          # js
+          {
+            expand: true
+            flatten: true
+            cwd: 'bower_components/'
+            src: [
+              '**/*.min.js'
+              '!**/sizzle.min.js'
+            ]
+            dest: 'dist/vendor/js/'
+          }
+          # map
+          {
+            expand: true
+            flatten: true
+            cwd: 'bower_components/'
+            src: [
+              '**/angular.min.js.map'
+              '**/jquery.min.map'
+            ]
+            dest: 'dist/vendor/js/'
+          }
+          # data
+          {
+            src: 'app/data/sample.json'
+            dest: 'dist/data/sample.json'
+          }
+        ]
+      production:
+        files: [
+          # css
+          {
+            expand: true
+            flatten: true
+            cwd: 'bower_components/'
+            src: '**/*.min.css'
+            dest: 'dist/vendor/css/'
+          }
+          # js
+          {
+            expand: true
+            flatten: true
+            cwd: 'bower_components/'
+            src: [
+              '**/*.min.js'
+              '!**/sizzle.min.js'
+            ]
+            dest: 'dist/vendor/js/'
+          }
+          # data
+          {
+            src: 'app/data/sample.json'
+            dest: 'dist/data/sample.json'
+          }
+        ]
 
     karma:
       unit:
@@ -132,11 +174,36 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-shell')
   grunt.loadNpmTasks('grunt-contrib-connect')
 
-  # Default task
+  # Development tasks
 
-  grunt.registerTask('compile', ['clean', 'jshint', 'concat', 'uglify', 'less', 'preprocess:index', 'copy'])
-  grunt.registerTask('test', ['compile', 'karma'])
-  grunt.registerTask('package', ['test', 'shell:package'])
+  grunt.registerTask('compile', [
+    'clean:all'
+    'clean:package'
+    'jshint'
+    'concat'
+    'less:development'
+    'preprocess:index'
+    'copy:development'
+  ])
+  grunt.registerTask('test', ['compile', 'karma:unit'])
+
+  # Production tasks
+
+  grunt.registerTask('prepare', [
+    'clean:all'
+    'clean:package'
+    'jshint'
+    'concat'
+    'uglify'
+    'less:production'
+    'preprocess:index'
+    'copy:production'
+    'clean:after'
+  ])
+  grunt.registerTask('confirm', ['prepare', 'karma:unit'])
+  grunt.registerTask('package', ['confirm', 'shell:package'])
+
+  # Default task
 
   grunt.registerTask('default', ['compile'])
 
