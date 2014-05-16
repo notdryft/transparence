@@ -9,13 +9,7 @@ module.exports = (grunt) ->
       after:
         src: 'dist/assets/js/transparence.js'
       all:
-        src: [
-          'dist/index.html'
-          'dist/assets/css'
-          'dist/assets/js'
-          'dist/data'
-          'dist/vendor'
-        ]
+        src: 'dist'
       package:
         src: [
           '*.tar.gz'
