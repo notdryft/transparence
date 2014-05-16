@@ -71,6 +71,9 @@ module.exports = (grunt) ->
 
     preprocess:
       index:
+        options:
+          context:
+            version: '<%= pkg.version %>'
         src: 'app/views/index.html'
         dest: 'dist/index.html'
 
