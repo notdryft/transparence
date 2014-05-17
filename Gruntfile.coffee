@@ -75,7 +75,8 @@ module.exports = (grunt) ->
           {
             expand: true
             flatten: true
-            src: 'bower_components/**/*.min.css'
+            cwd: 'bower_components/'
+            src: '**/bootstrap.min.css'
             dest: 'dist/vendor/css/'
           }
           # js
@@ -113,7 +114,7 @@ module.exports = (grunt) ->
             expand: true
             flatten: true
             cwd: 'bower_components/'
-            src: '**/*.min.css'
+            src: '**/bootstrap.min.css'
             dest: 'dist/vendor/css/'
           }
           # js
