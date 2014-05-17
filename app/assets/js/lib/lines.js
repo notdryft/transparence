@@ -13,6 +13,7 @@ d3.chart.lines = function () {
   var height;
   var thickness;
 
+  var _data;
   var _innerWidth;
   var _innerHeight;
 
@@ -24,7 +25,7 @@ d3.chart.lines = function () {
     // chart
 
     g.append('g')
-      .classed('lines', true)
+      .classed('bonuses', true)
       .attr('transform', 'translate(' + [twice, thickness] + ')');
 
     // axis
@@ -42,36 +43,63 @@ d3.chart.lines = function () {
 
   function update() {
     var xScale = d3.time.scale()
-      .domain(d3.extent(data, function (d) {
+      .domain(d3.extent(_data, function (d) {
         return d.millis;
       }))
       .range([0, _innerWidth]);
 
     var maxBonus = d3.max(data, function (d) {
-      return d.bonus();
+      return d3.max(d.values, function (dd) {
+        return dd.bonus;
+      });
     });
 
     var yScale = d3.scale.linear()
       .domain([0, maxBonus])
       .range([_innerHeight, 0]);
 
-    _updateChart(xScale, yScale);
-    _updateAxis(xScale, yScale);
-  }
-
-  function _updateChart(xScale, yScale) {
     var line = d3.svg.line()
       .interpolate('basis')
       .x(function (d) {
         return xScale(d.millis);
       })
       .y(function (d) {
-        return yScale(d.bonus());
+        return yScale(d.bonus);
       });
 
-    g.select('.lines')
-      .append('path')
-      .attr('d', line(data));
+    var colorScale = d3.scale.category20()
+      .domain(data.map(function (d) {
+        return d.name;
+      }));
+
+    _updateAxis(xScale, yScale);
+    _updateChart(line, colorScale);
+  }
+
+  function _updateChart(line, colorScale) {
+    var bonus =
+      g.select('.bonuses')
+        .selectAll('.bonus')
+        .data(data, function (d) {
+          return data.indexOf(d);
+        });
+
+    bonus.enter()
+      .append('g')
+      .classed('bonus', true);
+
+    bonus.append('path')
+      .transition()
+      .attr('d', function (d) {
+        return line(d.values);
+      })
+      .style('stroke', function (d) {
+        return colorScale(d.name);
+      });
+
+    bonus.exit()
+      .transition()
+      .remove();
   }
 
   function _dateFormat(date) {
@@ -113,7 +141,7 @@ d3.chart.lines = function () {
     var xAxis = d3.svg.axis()
       .scale(xScale)
       .orient('bottom')
-      .ticks(data.length)
+      .ticks(_data.length)
       .tickFormat(_dateFormat);
 
     g.select('.xaxis')
@@ -134,12 +162,37 @@ d3.chart.lines = function () {
 
   chart.update = update;
 
+  function _mapData(data) {
+    function _mapValues(data, ideal) {
+      return data.map(function (d) {
+
+        return {
+          bonus: ideal ? d[ideal].bonus() : d.bonus(),
+          millis: d.millis
+        };
+      });
+    }
+
+    var bonus = {
+      name: 'Real bonus',
+      values: _mapValues(data)
+    };
+
+    var ideal = {
+      name: 'Ideal bonus',
+      values: _mapValues(data, 'ideal')
+    };
+
+    return [bonus, ideal];
+  }
+
   chart.data = function (value) {
     if (!arguments.length) {
       return data;
     }
 
-    data = value;
+    _data = value;
+    data = _mapData(_data);
 
     return chart;
   };

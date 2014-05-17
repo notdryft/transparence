@@ -2,7 +2,7 @@
 
 'use strict';
 
-transparence.directive('chart', function () {
+transparence.directive('chart', ['$timeout', function ($timeout) {
 
   return {
     restrict: 'C',
@@ -39,4 +39,4 @@ transparence.directive('chart', function () {
       });
     }
   };
-});
+}]);
