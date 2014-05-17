@@ -11,7 +11,27 @@ transparence.factory('Sheet', ['Month', function (Month) {
       spreadsheet: spreadsheet
     };
 
-    return angular.extend(sheet, {
+    function _mean(index, ideal) {
+      if (index === 0) {
+        return 0;
+      }
+
+      var start = index - 6;
+      start = (start < 0) ? 0 : start;
+
+      var sum = 0;
+      var availableMonths = sheet.months.slice(start, index);
+      for (var i = 0; i < availableMonths.length; i++) {
+        var availableMonth =
+          ideal ? availableMonths[i][ideal] : availableMonths[i];
+
+        sum += availableMonth.delta();
+      }
+
+      return sum / availableMonths.length;
+    }
+
+    var parent = {
 
       monthCount: function () {
         return this.months.length;
@@ -40,21 +60,17 @@ transparence.factory('Sheet', ['Month', function (Month) {
       },
 
       mean: function (index) {
-        if (index === 0) {
-          return 0;
-        }
-
-        var start = index - 6;
-        start = (start < 0) ? 0 : start;
-
-        var sum = 0;
-        var availableMonths = this.months.slice(start, index);
-        for (var i = 0; i < availableMonths.length; i++) {
-          sum += availableMonths[i].delta();
-        }
-
-        return sum / availableMonths.length;
+        return _mean(index);
       }
-    });
+    };
+
+    parent.ideal = {
+
+      mean: function (index) {
+        return _mean(index, 'ideal');
+      }
+    };
+
+    return angular.extend(sheet, parent);
   };
 }]);

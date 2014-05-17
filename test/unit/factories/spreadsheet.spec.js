@@ -21,8 +21,7 @@ describe('Spreadsheet factory', function () {
   function _checkFixturesConsistency(sample, expected) {
     expect(sample.simulations.length).toBe(expected.sheets.length);
     for (var i = 0; i < sample.simulations.length; i++) {
-      expect(sample.simulations[i].workedDays.length)
-        .toBe(expected.sheets[i].months.length);
+      expect(sample.simulations[i].workedDays.length).toBe(expected.sheets[i].months.length);
     }
   }
 

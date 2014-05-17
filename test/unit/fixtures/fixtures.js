@@ -37,7 +37,8 @@ var fixtures = {
       },
       simulations: [
         {
-          workedDays: [0, 10, 13, 15, 19.5, 21, 13, 19, 20, 22, 20, 22, 23, 20, 22, 21, 20, 22, 22, 21, 22, 23, 21, 22]
+          workedDays: [0, 10, 13, 15, 19.5, 21, 13, 19, 20, 22, 20, 22, 23, 19, 22, 21, 20, 22, 21, 17, 22, 22, 21, 22],
+          businessDays: [23, 19, 21, 22, 20, 21, 21, 19, 20, 22, 20, 22, 23, 19, 22, 21, 20, 22, 21, 17, 22, 22, 21, 22]
         }
       ]
     },
@@ -51,149 +52,317 @@ var fixtures = {
       sheets: [
         {
           months: [
+            // Month 1
             {
               sales: 0,
               delta: -4609,
               mean: 0,
-              bonus: 0
+              bonus: 0,
+              ideal: {
+                sales: 0,
+                delta: -4609,
+                mean: 0,
+                bonus: 0
+              }
             },
+            // Month 2
             {
               sales: 6750,
               delta: -559,
               mean: -4609,
-              bonus: 0
+              bonus: 0,
+              ideal: {
+                sales: 12825,
+                delta: 3086,
+                mean: -4609,
+                bonus: 0
+              }
             },
+            // Month 3
             {
               sales: 8775,
               delta: 656,
               mean: -2584,
-              bonus: 0
+              bonus: 0,
+              ideal: {
+                sales: 14175,
+                delta: 3896,
+                mean: -761,
+                bonus: 0
+              }
             },
+            // Month 4
             {
               sales: 10125,
               delta: 1466,
               mean: -1504,
-              bonus: 0
+              bonus: 0,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 791,
+                bonus: 501
+              }
             },
+            // Month 5
             {
               sales: 13163,
               delta: 3289,
               mean: -761,
-              bonus: 0
+              bonus: 0,
+              ideal: {
+                sales: 13500,
+                delta: 3491,
+                mean: 1669,
+                bonus: 1056
+              }
             },
+            // Month 6
             {
               sales: 14175,
               delta: 3896,
               mean: 49,
-              bonus: 31
+              bonus: 31,
+              ideal: {
+                sales: 14175,
+                delta: 3896,
+                mean: 2033,
+                bonus: 1287
+              }
             },
+            // Month 7
             {
               sales: 8775,
               delta: 656,
               mean: 690,
-              bonus: 437
+              bonus: 437,
+              ideal: {
+                sales: 14175,
+                delta: 3896,
+                mean: 2344,
+                bonus: 1483
+              }
             },
+            // Month 8
             {
               sales: 12825,
               delta: 3086,
               mean: 1567,
-              bonus: 992
+              bonus: 992,
+              ideal: {
+                sales: 12825,
+                delta: 3086,
+                mean: 3761,
+                bonus: 2380
+              }
             },
+            // Month 9
             {
               sales: 13500,
               delta: 3491,
               mean: 2175,
-              bonus: 1377
+              bonus: 1377,
+              ideal: {
+                sales: 13500,
+                delta: 3491,
+                mean: 3761,
+                bonus: 2380
+              }
             },
+            // Month 10
             {
               sales: 14850,
               delta: 4301,
               mean: 2647,
-              bonus: 1676
+              bonus: 1676,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 3694,
+                bonus: 2338
+              }
             },
+            // Month 11
             {
               sales: 13500,
               delta: 3491,
               mean: 3120,
-              bonus: 1975
+              bonus: 1975,
+              ideal: {
+                sales: 13500,
+                delta: 3491,
+                mean: 3694,
+                bonus: 2338
+              }
             },
+            // Month 12
             {
               sales: 14850,
               delta: 4301,
               mean: 3154,
-              bonus: 1996
+              bonus: 1996,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 3694,
+                bonus: 2338
+              }
             },
+            // Month 13
             {
               sales: 15525,
               delta: 4706,
               mean: 3221,
-              bonus: 2039
+              bonus: 2039,
+              ideal: {
+                sales: 15525,
+                delta: 4706,
+                mean: 3761,
+                bonus: 2380
+              }
             },
+            // Month 14
             {
-              sales: 13500,
-              delta: 3491,
+              sales: 12825,
+              delta: 3086,
               mean: 3896,
-              bonus: 2466
+              bonus: 2466,
+              ideal: {
+                sales: 12825,
+                delta: 3086,
+                mean: 3896,
+                bonus: 2466
+              }
             },
+            // Month 15
             {
               sales: 14850,
               delta: 4301,
-              mean: 3964,
-              bonus: 2509
+              mean: 3896,
+              bonus: 2466,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 3896,
+                bonus: 2466
+              }
             },
+            // Month 16
             {
               sales: 14175,
               delta: 3896,
-              mean: 4099,
-              bonus: 2594
+              mean: 4031,
+              bonus: 2551,
+              ideal: {
+                sales: 14175,
+                delta: 3896,
+                mean: 4031,
+                bonus: 2551
+              }
             },
+            // Month 17
             {
               sales: 13500,
               delta: 3491,
-              mean: 4031,
-              bonus: 2551
+              mean: 3964,
+              bonus: 2509,
+              ideal: {
+                sales: 13500,
+                delta: 3491,
+                mean: 3964,
+                bonus: 2509
+              }
             },
+            // Month 18
             {
               sales: 14850,
               delta: 4301,
-              mean: 4031,
-              bonus: 2551
+              mean: 3964,
+              bonus: 2509,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 3964,
+                bonus: 2509
+              }
             },
-            {
-              sales: 14850,
-              delta: 4301,
-              mean: 4031,
-              bonus: 2551
-            },
+            // Month 19
             {
               sales: 14175,
               delta: 3896,
               mean: 3964,
-              bonus: 2509
+              bonus: 2509,
+              ideal: {
+                sales: 14175,
+                delta: 3896,
+                mean: 3964,
+                bonus: 2509
+              }
             },
+            // Month 20
+            {
+              sales: 11475,
+              delta: 2276,
+              mean: 3829,
+              bonus: 2423,
+              ideal: {
+                sales: 11475,
+                delta: 2276,
+                mean: 3829,
+                bonus: 2423
+              }
+            },
+            // Month 21
             {
               sales: 14850,
               delta: 4301,
-              mean: 4031,
-              bonus: 2551
+              mean: 3694,
+              bonus: 2338,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 3694,
+                bonus: 2338
+              }
             },
+            // Month 22
             {
-              sales: 15525,
-              delta: 4706,
-              mean: 4031,
-              bonus: 2551
+              sales: 14850,
+              delta: 4301,
+              mean: 3694,
+              bonus: 2338,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 3694,
+                bonus: 2338
+              }
             },
+            // Month 23
             {
               sales: 14175,
               delta: 3896,
-              mean: 4166,
-              bonus: 2637
+              mean: 3761,
+              bonus: 2380,
+              ideal: {
+                sales: 14175,
+                delta: 3896,
+                mean: 3761,
+                bonus: 2380
+              }
             },
+            // Month 24
             {
               sales: 14850,
               delta: 4301,
-              mean: 4234,
-              bonus: 2680
+              mean: 3829,
+              bonus: 2423,
+              ideal: {
+                sales: 14850,
+                delta: 4301,
+                mean: 3829,
+                bonus: 2423
+              }
             }
           ]
         }

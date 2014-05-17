@@ -25,8 +25,8 @@ describe('Month factory', function () {
   function _checkFixturesConsistency(sample, expected) {
     expect(sample.simulations.length).toBe(expected.sheets.length);
     for (var i = 0; i < sample.simulations.length; i++) {
-      expect(sample.simulations[i].workedDays.length)
-        .toBe(expected.sheets[i].months.length);
+      expect(sample.simulations[i].workedDays.length).toBe(sample.simulations[i].businessDays.length);
+      expect(sample.simulations[i].workedDays.length).toBe(expected.sheets[i].months.length);
     }
   }
 
@@ -41,6 +41,7 @@ describe('Month factory', function () {
     var spreadsheet = new Spreadsheet(sample.commons);
     var sheet = new Sheet(spreadsheet);
     spyOn(sheet, 'mean');
+    spyOn(sheet.ideal, 'mean');
 
     for (var i = 0; i < sample.simulations.length; i++) {
       var simulation = sample.simulations[i];
@@ -48,8 +49,10 @@ describe('Month factory', function () {
 
       for (var j = 0; j < simulation.workedDays.length; j++) {
         var workedDays = simulation.workedDays[j];
+        var businessDays = simulation.businessDays[j];
 
         var month = new Month({
+          businessDays: businessDays,
           index: j,
           sheet: sheet,
           spreadsheet: spreadsheet,
@@ -66,6 +69,15 @@ describe('Month factory', function () {
 
         month.bonus();
         expect(sheet.mean).toHaveBeenCalledWith(j);
+
+        expect(Math.round(month.ideal.sales())).toBe(expectedMonth.ideal.sales);
+        expect(Math.round(month.ideal.delta())).toBe(expectedMonth.ideal.delta);
+
+        month.ideal.mean();
+        expect(sheet.ideal.mean).toHaveBeenCalledWith(j);
+
+        month.ideal.bonus();
+        expect(sheet.ideal.mean).toHaveBeenCalledWith(j);
       }
     }
   });

@@ -40,13 +40,31 @@
         </thead>
         <tbody>
         <tr ng-repeat="month in sheet.months">
-          <td>{{ month.millis | date: 'MMMM' }}<span class="below">{{ month.millis | date: 'yyyy' }}</span></td>
-          <td class="text-right">{{ month.workedDays }}<span class="follow">{{ month.businessDays }}</span></td>
-          <td class="text-right currency">{{ month.sales() | number: 2 }} &euro;</td>
+          <td>
+            {{ month.millis | date: 'MMMM' }}
+            <span class="below">{{ month.millis | date: 'yyyy' }}</span>
+          </td>
+          <td class="text-right">
+            {{ month.workedDays }}
+            <span class="follow">{{ month.businessDays }}</span>
+          </td>
+          <td class="text-right">
+            {{ month.sales() | number: 2 }} &euro;
+            <span class="below">{{ month.ideal.sales() | number: 2 }} &euro;</span>
+          </td>
           <td class="text-right">{{ month.taxFreeRate | number: 2 }} &euro;</td>
-          <td class="text-right">{{ month.delta() | number: 2 }} &euro;</td>
-          <td class="text-right">{{ month.mean() | number: 2 }} &euro;</td>
-          <td class="text-right">{{ month.bonus() | number: 2 }} &euro;</td>
+          <td class="text-right">
+            {{ month.delta() | number: 2 }} &euro;
+            <span class="below">{{ month.ideal.delta() | number: 2 }} &euro;</span>
+          </td>
+          <td class="text-right">
+            {{ month.mean() | number: 2 }} &euro;
+            <span class="below">{{ month.ideal.mean() | number: 2 }} &euro;</span>
+          </td>
+          <td class="text-right">
+            {{ month.bonus() | number: 2 }} &euro;
+            <span class="below">{{ month.ideal.bonus() | number: 2 }} &euro;</span>
+          </td>
         </tr>
         </tbody>
       </table>

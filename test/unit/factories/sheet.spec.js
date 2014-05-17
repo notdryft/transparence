@@ -22,8 +22,8 @@ describe('Sheet factory', function () {
   function _checkFixturesConsistency(sample, expected) {
     expect(sample.simulations.length).toBe(expected.sheets.length);
     for (var i = 0; i < sample.simulations.length; i++) {
-      expect(sample.simulations[i].workedDays.length)
-        .toBe(expected.sheets[i].months.length);
+      expect(sample.simulations[i].workedDays.length).toBe(sample.simulations[i].businessDays.length);
+      expect(sample.simulations[i].workedDays.length).toBe(expected.sheets[i].months.length);
     }
   }
 
@@ -51,6 +51,12 @@ describe('Sheet factory', function () {
         expect(Math.round(month.delta())).toBe(expectedMonth.delta);
         expect(Math.round(month.mean())).toBe(expectedMonth.mean);
         expect(Math.round(month.bonus())).toBe(expectedMonth.bonus);
+
+        month.businessDays = simulation.businessDays[j];
+        expect(Math.round(month.ideal.sales())).toBe(expectedMonth.ideal.sales);
+        expect(Math.round(month.ideal.delta())).toBe(expectedMonth.ideal.delta);
+        expect(Math.round(month.ideal.mean())).toBe(expectedMonth.ideal.mean);
+        expect(Math.round(month.ideal.bonus())).toBe(expectedMonth.ideal.bonus);
       }
     }
   });
