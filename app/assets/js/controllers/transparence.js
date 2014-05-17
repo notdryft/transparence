@@ -19,7 +19,7 @@ transparence.controller('TransparenceController', ['$scope', 'DaysService', 'Spr
   }
 
   SpreadsheetService
-    .read('/data/sample.json')
+    .read('data/sample.json')
     .then(function (d) {
       updateScope(d.data);
     });
