@@ -80,26 +80,28 @@ d3.chart.lines = function () {
     var bonus =
       g.select('.bonuses')
         .selectAll('.bonus')
-        .data(data, function (d) {
-          return data.indexOf(d);
-        });
+        .data(data);
 
-    bonus.enter()
-      .append('g')
-      .classed('bonus', true);
+    var bonusEnter =
+      bonus.enter()
+        .append('g')
+        .classed('bonus', true);
 
-    bonus.append('path')
-      .transition()
-      .attr('d', function (d) {
-        return line(d.values);
-      })
+    bonusEnter.append('path')
       .style('stroke', function (d) {
         return colorScale(d.name);
       });
 
-    bonus.exit()
-      .transition()
-      .remove();
+    var transition =
+      g.select('.bonuses')
+        .selectAll('.bonus')
+        .transition()
+        .duration(1000);
+
+    transition.select('path')
+      .attr('d', function (d) {
+        return line(d.values);
+      });
   }
 
   function _dateFormat(date) {
