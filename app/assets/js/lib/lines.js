@@ -59,7 +59,7 @@ d3.chart.lines = function () {
       .range([_innerHeight, 0]);
 
     var line = d3.svg.line()
-      .interpolate('basis')
+      .interpolate('monotone')
       .x(function (d) {
         return xScale(d.millis);
       })
