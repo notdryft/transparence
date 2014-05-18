@@ -1,4 +1,4 @@
-/* global fixtures, module, describe, it, beforeEach, inject, expect */
+/* global fixtures, module, describe, it, beforeEach, inject, spyOn, expect */
 
 'use strict';
 
@@ -117,5 +117,34 @@ describe('Days service', function () {
     _checkBusinessDays(2014, weekDays.year2014, publicHolidays.year2014);
     _checkBusinessDays(2015, weekDays.year2015, publicHolidays.year2015);
     _checkBusinessDays(2016, weekDays.year2016, publicHolidays.year2016);
+  });
+
+  it("should make efficient use of it's inner cache while computing business days", function () {
+    var publicHolidays = fixtures.date.expected.publicHolidays;
+
+    spyOn(DaysService, 'publicHolidaysInYear')
+      .and.callFake(function (year) {
+        switch (year) {
+          case 2014:
+            return publicHolidays.year2014;
+          case 2015:
+            return publicHolidays.year2015;
+          case 2016:
+            return publicHolidays.year2016;
+        }
+      });
+
+    for (var year = 2014; year <= 2016; year++) {
+      for (var month = 0; month < 12; month++) {
+        var currentMonth = new Date(year, month);
+
+        DaysService.businessDaysInMonth(currentMonth);
+      }
+
+      var calls = DaysService.publicHolidaysInYear.calls;
+      expect(calls.count()).toBe(1);
+
+      calls.reset();
+    }
   });
 });
