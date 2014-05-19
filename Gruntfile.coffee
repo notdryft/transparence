@@ -97,6 +97,7 @@ module.exports = (grunt) ->
             cwd: 'bower_components/'
             src: [
               '**/angular.min.js.map'
+              '**/angular-route.min.js.map'
               '**/jquery.min.map'
             ]
             dest: 'dist/vendor/js/'

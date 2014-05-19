@@ -1,8 +1,16 @@
-/* global transparence */
+/* global console, transparence */
 
 'use strict';
 
-transparence.controller('TransparenceController', ['$scope', 'DaysService', 'SpreadsheetService', function ($scope, DaysService, SpreadsheetService) {
+transparence.controller('TransparenceController', ['$scope', '$route', '$routeParams', '$location', 'DaysService', 'SpreadsheetService', function ($scope, $route, $routeParams, $location, DaysService, SpreadsheetService) {
+
+  console.log('Round');
+  console.log('$route');
+  console.log($route);
+  console.log('$routeParams');
+  console.log($routeParams);
+  console.log('$location');
+  console.log($location);
 
   function updateScope(data) {
     var spreadsheet = SpreadsheetService.compute(data.commons);

@@ -2,4 +2,4 @@
 
 'use strict';
 
-var transparence = angular.module('Transparence', []);
+var transparence = angular.module('Transparence', ['ngRoute']);

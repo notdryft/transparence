@@ -18,6 +18,7 @@ module.exports = function (config) {
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/bootstrap/dist/js/bootstrap.min.js',
       'bower_components/angular/angular.min.js',
+      'bower_components/angular-route/angular-route.min.js',
       'bower_components/d3/d3.min.js',
       // tests dependencies
       'bower_components/angular-mocks/angular-mocks.js',

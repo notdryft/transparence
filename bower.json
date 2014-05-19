@@ -1,8 +1,9 @@
 {
   "name": "transparence",
-  "version": "0.0.0",
+  "version": "0.1.0-snapshot",
   "dependencies": {
     "angular": "~1.2.16",
+    "angular-route": "~1.2.16",
     "d3": "~3.4.6",
     "bootstrap": "~3.1.1",
     "jquery": "~1.11.1"
