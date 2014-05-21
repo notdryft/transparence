@@ -1,4 +1,5 @@
 /* global angular */
+/* jshint unused: true */
 
 'use strict';
 
