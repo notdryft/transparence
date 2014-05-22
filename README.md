@@ -43,7 +43,7 @@ Main chains are:
 [... transparence ]$ NODE_ENV=production grunt package
 ```
 
-Don't forget to set NODE_ENV to either `development` or `production`.
+Don't forget to set `NODE_ENV` to either `development` or `production`.
 
 ## Testing
 
