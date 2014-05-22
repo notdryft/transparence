@@ -10,7 +10,8 @@ module.exports = function (config) {
 
     plugins: [
       'karma-jasmine',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-coverage'
     ],
 
     files: [
@@ -38,11 +39,20 @@ module.exports = function (config) {
       'test/unit/controllers/*.spec.js'
     ],
 
+    preprocessors: {
+      '**/app/assets/**/*.js': 'coverage'
+    },
+
     exclude: [],
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      type: 'lcovonly',
+      dir: 'coverage'
+    },
 
     // web server port
     port: 9876,

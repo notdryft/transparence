@@ -11,6 +11,9 @@ node_modules
 # bower
 bower_components
 
+# tests
+coverage
+
 # build
 build
 
