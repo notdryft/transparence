@@ -30,7 +30,7 @@
         </div>
         <div class="form-group">
           <label for="annualSalary">Annual salary</label>
-          <input class="form-control" id="annualSalary" value="{{ spreadsheet.salary.annual }}" disabled>
+          <input class="form-control" id="annualSalary" value="{{ spreadsheet.salary.annual() }}" disabled>
         </div>
         <div class="form-group">
           <label for="rate">Rate</label>
@@ -38,8 +38,8 @@
         </div>
         <div class="form-group">
           <label for="taxFreeRate">Tax free rate (90%)</label>
-          <input class="form-control" id="taxFreeRate" value="{{ spreadsheet.salary.taxFreeRate | number: 2 }}"
-                 disabled>
+          <input class="form-control" id="taxFreeRate"
+                 value="{{ spreadsheet.salary.taxFreeRate() | number: 2 }}" disabled>
         </div>
       </form>
     </div>
@@ -73,7 +73,7 @@
             {{ month.sales() | number: 2 }} &euro;
             <span class="below">{{ month.ideal.sales() | number: 2 }} &euro;</span>
           </td>
-          <td class="text-right">{{ month.taxFreeRate | number: 2 }} &euro;</td>
+          <td class="text-right">{{ month.taxFreeRate() | number: 2 }} &euro;</td>
           <td class="text-right">
             {{ month.delta() | number: 2 }} &euro;
             <span class="below">{{ month.ideal.delta() | number: 2 }} &euro;</span>

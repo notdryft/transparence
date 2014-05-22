@@ -1,4 +1,5 @@
 /* global angular, transparence */
+/* jshint loopfunc: true */
 
 'use strict';
 
@@ -51,7 +52,9 @@ transparence.factory('Sheet', ['Month', function (Month) {
             millis: currentMonth.getTime(),
             sheet: this,
             spreadsheet: this.spreadsheet,
-            taxFreeRate: i && this.spreadsheet.salary.taxFreeRate,
+            taxFreeRate: function () {
+              return this.index && this.spreadsheet.salary.taxFreeRate();
+            },
             workedDays: simulation.workedDays[i]
           }));
 

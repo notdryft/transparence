@@ -9,9 +9,13 @@ transparence.factory('Spreadsheet', ['Sheet', function (Sheet) {
     var spreadsheet = {
       salary: {
         mensual: salary.mensual,
-        annual: salary.mensual * 12,
+        annual: function () {
+          return this.mensual * 12;
+        },
         rate: salary.rate,
-        taxFreeRate: salary.rate * 0.9
+        taxFreeRate: function () {
+          return this.rate * 0.9;
+        }
       },
       sheets: [],
       startFrom: commons.startFrom

@@ -60,8 +60,8 @@ describe('Spreadsheet service', function () {
     _checkFixturesConsistency(sample, expected);
 
     var spreadsheet = SpreadsheetService.compute(sample.commons);
-    expect(spreadsheet.salary.annual).toBe(expected.commons.salary.annual);
-    expect(spreadsheet.salary.taxFreeRate).toBe(expected.commons.salary.taxFreeRate);
+    expect(spreadsheet.salary.annual()).toBe(expected.commons.salary.annual);
+    expect(spreadsheet.salary.taxFreeRate()).toBe(expected.commons.salary.taxFreeRate);
 
     for (var i = 0; i < sample.simulations.length; i++) {
       var simulation = sample.simulations[i];

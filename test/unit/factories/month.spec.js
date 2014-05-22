@@ -1,4 +1,5 @@
 /* global fixtures, module, describe, it, beforeEach, afterEach, inject, spyOn, expect */
+/* jshint loopfunc: true */
 
 'use strict';
 
@@ -56,7 +57,9 @@ describe('Month factory', function () {
           index: j,
           sheet: sheet,
           spreadsheet: spreadsheet,
-          taxFreeRate: j && taxFreeRate,
+          taxFreeRate: function () {
+            return this.index && taxFreeRate;
+          },
           workedDays: workedDays
         });
 
