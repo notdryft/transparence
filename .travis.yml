@@ -4,7 +4,8 @@ node_js:
  - "0.11"
  - "0.10"
 
-before_script:
+before_install:
  - npm install -g grunt grunt-cli bower
  - bower install
- 
+script:
+ - karma start --single-run --browsers Firefox
