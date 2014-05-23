@@ -1,4 +1,4 @@
-# Transparence [![Code Climate](https://codeclimate.com/github/notdryft/transparence.png)](https://codeclimate.com/github/notdryft/transparence) [![Code Climate](https://codeclimate.com/github/notdryft/transparence/coverage.png)](https://codeclimate.com/github/notdryft/transparence) [![devDependency Status](https://david-dm.org/notdryft/transparence/dev-status.svg)](https://david-dm.org/notdryft/transparence#info=devDependencies)
+# Transparence [![Build Status](https://travis-ci.org/notdryft/transparence.svg?branch=master)](https://travis-ci.org/notdryft/transparence) [![Code Climate](https://codeclimate.com/github/notdryft/transparence.png)](https://codeclimate.com/github/notdryft/transparence) [![Code Climate](https://codeclimate.com/github/notdryft/transparence/coverage.png)](https://codeclimate.com/github/notdryft/transparence) [![devDependency Status](https://david-dm.org/notdryft/transparence/dev-status.svg)](https://david-dm.org/notdryft/transparence#info=devDependencies)
 
 A tool to help with bonus calculation in a **visual** and **easy** way.
 
