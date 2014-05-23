@@ -55,7 +55,7 @@ Don't forget to set `NODE_ENV` to either `development` or `production`.
 You can start [Karma](http://karma-runner.github.io/)'s file watch this way:
 
 ```bash
-$ npm install -g karma jasmine-node
+$ npm install -g karma
 [... transparence ]$ karma start
 ```
 
