@@ -32,10 +32,15 @@ Available tasks are:
 
 Main tasks are:
 * `compile`: development oriented compiling
+ - `clean:all`, `clean:package`, `jshint`, `concat`, `less:development`, `preprocess:index`, `copy:development`
 * `test`: development oriented compiling and testing
+ - `compile`, `karma:unit`
 * `prepare`: production oriented compiling
+ - `clean:all`, `clean:package`, `jshint`, `concat`, `uglify`, `less:production`, `preprocess:index`, `copy:production`, `clean:after`
 * `confirm`: production oriented compiling and testing
+ - `prepare`, `karma:unit`
 * `package`: which does `prepare` and `confirm` plus project packaging
+ - `confirm`, `shell:package`
 
 Main chains are:
 ```bash
