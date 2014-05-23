@@ -7,5 +7,8 @@ node_js:
 before_install:
  - npm install -g grunt grunt-cli bower
  - bower install
+
+before_script:
+ - npm install -g karma
 script:
  - karma start --single-run --browsers Firefox
