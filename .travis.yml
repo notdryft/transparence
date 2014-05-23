@@ -8,5 +8,8 @@ before_install:
  - npm install -g grunt grunt-cli bower
  - bower install
 
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 script:
  - ./node_modules/karma/bin/karma start --single-run --browsers Firefox
