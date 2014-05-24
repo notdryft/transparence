@@ -19,18 +19,9 @@ describe('Sheet factory', function () {
     expect(Spreadsheet).not.toEqual(null);
   });
 
-  function _checkFixturesConsistency(sample, expected) {
-    expect(sample.simulations.length).toBe(expected.sheets.length);
-    for (var i = 0; i < sample.simulations.length; i++) {
-      expect(sample.simulations[i].workedDays.length).toBe(sample.simulations[i].businessDays.length);
-      expect(sample.simulations[i].workedDays.length).toBe(expected.sheets[i].months.length);
-    }
-  }
-
   it('should compute json data correctly', function () {
     var sample = fixtures.spreadsheet.sample;
     var expected = fixtures.spreadsheet.expected;
-    _checkFixturesConsistency(sample, expected);
 
     var spreadsheet = new Spreadsheet(sample.commons);
     for (var i = 0; i < sample.simulations.length; i++) {

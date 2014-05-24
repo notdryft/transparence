@@ -23,27 +23,16 @@ describe('Month factory', function () {
     expect(Spreadsheet).not.toEqual(null);
   });
 
-  function _checkFixturesConsistency(sample, expected) {
-    expect(sample.simulations.length).toBe(expected.sheets.length);
-    for (var i = 0; i < sample.simulations.length; i++) {
-      expect(sample.simulations[i].workedDays.length).toBe(sample.simulations[i].businessDays.length);
-      expect(sample.simulations[i].workedDays.length).toBe(expected.sheets[i].months.length);
-    }
-  }
-
   it('should compute json data correctly', function () {
     var sample = fixtures.spreadsheet.sample;
     var expected = fixtures.spreadsheet.expected;
-    _checkFixturesConsistency(sample, expected);
-
-    var taxFreeRate = sample.commons.salary.rate * sample.commons.tax;
-    expect(taxFreeRate).toBe(expected.commons.salary.taxFreeRate);
 
     var spreadsheet = new Spreadsheet(sample.commons);
     var sheet = new Sheet(spreadsheet);
     spyOn(sheet, 'mean');
     spyOn(sheet.ideal, 'mean');
 
+    var taxFreeRate = sample.commons.salary.rate * sample.commons.tax;
     for (var i = 0; i < sample.simulations.length; i++) {
       var simulation = sample.simulations[i];
       var expectedSheet = expected.sheets[i];

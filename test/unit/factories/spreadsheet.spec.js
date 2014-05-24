@@ -18,17 +18,9 @@ describe('Spreadsheet factory', function () {
     expect(Spreadsheet).not.toEqual(null);
   });
 
-  function _checkFixturesConsistency(sample, expected) {
-    expect(sample.simulations.length).toBe(expected.sheets.length);
-    for (var i = 0; i < sample.simulations.length; i++) {
-      expect(sample.simulations[i].workedDays.length).toBe(expected.sheets[i].months.length);
-    }
-  }
-
   it('should compute json data correctly', function () {
     var sample = fixtures.spreadsheet.sample;
     var expected = fixtures.spreadsheet.expected;
-    _checkFixturesConsistency(sample, expected);
 
     var spreadsheet = new Spreadsheet(sample.commons);
     expect(spreadsheet.salary.annual()).toBe(expected.commons.salary.annual);
@@ -51,8 +43,6 @@ describe('Spreadsheet factory', function () {
 
   it('should create a new sheet when updating a non existing one', function () {
     var sample = fixtures.spreadsheet.sample;
-    var expected = fixtures.spreadsheet.expected;
-    _checkFixturesConsistency(sample, expected);
 
     var spreadsheet = new Spreadsheet(sample.commons);
     spyOn(spreadsheet, 'createSheet').and.callFake(function (index) {
