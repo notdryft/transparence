@@ -1,16 +1,16 @@
-/* global angular, transparence */
+/* global console, angular, transparence */
 
 'use strict';
 
 transparence.factory('Month', function () {
 
-  return function (month) {
+  return function (sheet, month) {
 
-    function _delta(sales) {
-      return sales * 0.6 - 1.58 * month.spreadsheet.salary.mensual;
+    function _deltaHelper(sales) {
+      return sales * 0.6 - 1.58 * month.commons.salary.mensual;
     }
 
-    function _bonus(mean) {
+    function _bonusHelper(mean) {
       return Math.max(0, mean) / 1.58;
     }
 
@@ -21,15 +21,15 @@ transparence.factory('Month', function () {
       },
 
       delta: function () {
-        return _delta(this.sales());
+        return _deltaHelper(this.sales());
       },
 
       mean: function () {
-        return month.sheet.mean(month.index);
+        return sheet.mean(month.index);
       },
 
       bonus: function () {
-        return _bonus(this.mean());
+        return _bonusHelper(this.mean());
       }
     };
 
@@ -40,15 +40,15 @@ transparence.factory('Month', function () {
       },
 
       delta: function () {
-        return _delta(this.sales());
+        return _deltaHelper(this.sales());
       },
 
       mean: function () {
-        return month.sheet.ideal.mean(month.index);
+        return sheet.ideal.mean(month.index);
       },
 
       bonus: function () {
-        return _bonus(this.mean());
+        return _bonusHelper(this.mean());
       }
     };
 

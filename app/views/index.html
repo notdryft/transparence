@@ -26,20 +26,20 @@
       <form role="form">
         <div class="form-group">
           <label for="mensualSalary">Mensual salary</label>
-          <input type="number" class="form-control" id="mensualSalary" ng-model="spreadsheet.salary.mensual">
+          <input type="number" class="form-control" id="mensualSalary" ng-model="spreadsheet.commons.salary.mensual">
         </div>
         <div class="form-group">
           <label for="annualSalary">Annual salary</label>
-          <input class="form-control" id="annualSalary" value="{{ spreadsheet.salary.annual() }}" disabled>
+          <input class="form-control" id="annualSalary" value="{{ spreadsheet.commons.salary.annual() }}" disabled>
         </div>
         <div class="form-group">
           <label for="rate">Rate</label>
-          <input type="number" class="form-control" id="rate" ng-model="spreadsheet.salary.rate">
+          <input type="number" class="form-control" id="rate" ng-model="spreadsheet.commons.salary.rate">
         </div>
         <div class="form-group">
           <label for="taxFreeRate">Tax free rate (90%)</label>
           <input class="form-control" id="taxFreeRate"
-                 value="{{ spreadsheet.salary.taxFreeRate() | number: 2 }}" disabled>
+                 value="{{ spreadsheet.commons.salary.taxFreeRate() | number: 2 }}" disabled>
         </div>
       </form>
     </div>

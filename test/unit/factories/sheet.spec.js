@@ -1,4 +1,5 @@
-/* global fixtures, module, describe, it, beforeEach, afterEach, inject, spyOn, expect */
+/* global fixtures, angular, module, describe, it, beforeEach, afterEach, inject, spyOn, expect */
+/* jshint loopfunc: true */
 
 'use strict';
 
@@ -23,12 +24,11 @@ describe('Sheet factory', function () {
     var sample = fixtures.spreadsheet.sample;
     var expected = fixtures.spreadsheet.expected;
 
-    var spreadsheet = new Spreadsheet(sample.commons);
     for (var i = 0; i < sample.simulations.length; i++) {
       var simulation = sample.simulations[i];
       var expectedSheet = expected.sheets[i];
 
-      var sheet = new Sheet(spreadsheet);
+      var sheet = new Sheet(sample.commons);
       expect(sheet.monthCount()).toBe(0);
 
       sheet.update(simulation);

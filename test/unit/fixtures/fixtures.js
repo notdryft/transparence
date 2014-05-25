@@ -29,11 +29,16 @@ var fixtures = {
     sample: {
       commons: {
         salary: {
+          annual: function () {
+            return this.mensual * 12;
+          },
           mensual: 2917,
-          rate: 750
+          rate: 750,
+          taxFreeRate: function () {
+            return this.rate * 0.9;
+          }
         },
-        startFrom: "2013/10",
-        tax: 0.9
+        startFrom: "2013/10"
       },
       simulations: [
         {

@@ -32,7 +32,6 @@ describe('Month factory', function () {
     spyOn(sheet, 'mean');
     spyOn(sheet.ideal, 'mean');
 
-    var taxFreeRate = sample.commons.salary.rate * sample.commons.tax;
     for (var i = 0; i < sample.simulations.length; i++) {
       var simulation = sample.simulations[i];
       var expectedSheet = expected.sheets[i];
@@ -41,13 +40,12 @@ describe('Month factory', function () {
         var workedDays = simulation.workedDays[j];
         var businessDays = simulation.businessDays[j];
 
-        var month = new Month({
+        var month = new Month(sheet, {
           businessDays: businessDays,
+          commons: sample.commons,
           index: j,
-          sheet: sheet,
-          spreadsheet: spreadsheet,
           taxFreeRate: function () {
-            return this.index && taxFreeRate;
+            return this.index && sample.commons.salary.taxFreeRate();
           },
           workedDays: workedDays
         });

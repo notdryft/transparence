@@ -5,14 +5,14 @@
 
 transparence.factory('Sheet', ['Month', function (Month) {
 
-  return function (spreadsheet) {
+  return function (commons) {
 
     var sheet = {
-      months: [],
-      spreadsheet: spreadsheet
+      commons: commons,
+      months: []
     };
 
-    function _mean(index, ideal) {
+    function _meanHelper(index, ideal) {
       if (index === 0) {
         return 0;
       }
@@ -43,17 +43,18 @@ transparence.factory('Sheet', ['Month', function (Month) {
       },
 
       update: function (simulation) {
-        this.months = [];
+        var me = this;
 
-        var currentMonth = new Date(this.spreadsheet.startFrom);
+        me.months = [];
+
+        var currentMonth = new Date(me.commons.startFrom);
         for (var i = 0; i < simulation.workedDays.length; i++) {
-          this.months.push(new Month({
+          me.months.push(new Month(sheet, {
             index: i,
+            commons: commons,
             millis: currentMonth.getTime(),
-            sheet: this,
-            spreadsheet: this.spreadsheet,
             taxFreeRate: function () {
-              return this.index && this.spreadsheet.salary.taxFreeRate();
+              return this.index && this.commons.salary.taxFreeRate();
             },
             workedDays: simulation.workedDays[i]
           }));
@@ -63,14 +64,14 @@ transparence.factory('Sheet', ['Month', function (Month) {
       },
 
       mean: function (index) {
-        return _mean(index);
+        return _meanHelper(index);
       }
     };
 
     parent.ideal = {
 
       mean: function (index) {
-        return _mean(index, 'ideal');
+        return _meanHelper(index, 'ideal');
       }
     };
 

@@ -7,18 +7,20 @@ transparence.factory('Spreadsheet', ['Sheet', function (Sheet) {
   return function (commons) {
     var salary = commons.salary;
     var spreadsheet = {
-      salary: {
-        mensual: salary.mensual,
-        annual: function () {
-          return this.mensual * 12;
+      commons: {
+        salary: {
+          mensual: salary.mensual,
+          annual: function () {
+            return this.mensual * 12;
+          },
+          rate: salary.rate,
+          taxFreeRate: function () {
+            return this.rate * 0.9;
+          }
         },
-        rate: salary.rate,
-        taxFreeRate: function () {
-          return this.rate * 0.9;
-        }
+        startFrom: commons.startFrom
       },
-      sheets: [],
-      startFrom: commons.startFrom
+      sheets: []
     };
 
     return angular.extend(spreadsheet, {
@@ -32,7 +34,7 @@ transparence.factory('Spreadsheet', ['Sheet', function (Sheet) {
       },
 
       createSheet: function (index) {
-        var sheet = new Sheet(this);
+        var sheet = new Sheet(this.commons);
         this.sheets[index] = sheet;
 
         return sheet;

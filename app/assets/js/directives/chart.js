@@ -30,13 +30,13 @@ transparence.directive('chart', function () {
 
       lines(lgroup);
 
-      scope.$watch('data', function (value) {
-        if (value) {
-          lines.data(value.sheetAt(0).months);
+      scope.$watch('data', function (newValue) {
+        if (newValue) {
+          lines.data(newValue.sheetAt(0).months);
 
           lines.update();
         }
-      });
+      }, true);
     }
   };
 });

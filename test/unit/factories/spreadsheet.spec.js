@@ -23,8 +23,8 @@ describe('Spreadsheet factory', function () {
     var expected = fixtures.spreadsheet.expected;
 
     var spreadsheet = new Spreadsheet(sample.commons);
-    expect(spreadsheet.salary.annual()).toBe(expected.commons.salary.annual);
-    expect(spreadsheet.salary.taxFreeRate()).toBe(expected.commons.salary.taxFreeRate);
+    expect(spreadsheet.commons.salary.annual()).toBe(expected.commons.salary.annual);
+    expect(spreadsheet.commons.salary.taxFreeRate()).toBe(expected.commons.salary.taxFreeRate);
 
     for (var i = 0; i < sample.simulations.length; i++) {
       var simulation = sample.simulations[i];

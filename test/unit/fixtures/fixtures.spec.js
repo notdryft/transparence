@@ -10,8 +10,8 @@ describe('Fixtures', function () {
     var sample = spreadsheet.sample;
     var expected = spreadsheet.expected;
 
-    var taxFreeRate = sample.commons.salary.rate * sample.commons.tax;
-    expect(taxFreeRate).toBe(expected.commons.salary.taxFreeRate);
+    expect(sample.commons.salary.annual()).toBe(expected.commons.salary.annual);
+    expect(sample.commons.salary.taxFreeRate()).toBe(expected.commons.salary.taxFreeRate);
   });
 
   it('should deliver consistent data for spreadsheet testing', function () {
