@@ -1,4 +1,4 @@
-/* global console, angular, transparence */
+/* global angular, transparence */
 
 'use strict';
 
