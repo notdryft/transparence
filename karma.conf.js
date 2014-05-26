@@ -26,13 +26,13 @@ module.exports = function (config) {
       // tests dependencies
       'bower_components/angular-mocks/angular-mocks.js',
       // librairies
-      'app/assets/js/lib/*.js',
+      'app/assets/javascripts/lib/*.js',
       // application
-      'app/assets/js/bootstrap.js',
-      'app/assets/js/directives/*.js',
-      'app/assets/js/factories/*.js',
-      'app/assets/js/services/*.js',
-      'app/assets/js/controllers/*.js',
+      'app/assets/javascripts/bootstrap.js',
+      'app/assets/javascripts/directives/*.js',
+      'app/assets/javascripts/factories/*.js',
+      'app/assets/javascripts/services/*.js',
+      'app/assets/javascripts/controllers/*.js',
       // fixtures
       'test/unit/fixtures/fixtures.js',
       // tests

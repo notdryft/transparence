@@ -32,20 +32,20 @@ module.exports = (grunt) ->
           '// Source: ' + path + '\n' + src.replace(/\/\* .* \*\/\n*'use strict';\n/g, '')
       all:
         src: [
-          'app/assets/js/lib/*.js'
-          'app/assets/js/bootstrap.js'
-          'app/assets/js/filters/*.js'
-          'app/assets/js/factories/*.js'
-          'app/assets/js/directives/*.js'
-          'app/assets/js/services/*.js'
-          'app/assets/js/controllers/*.js'
+          'app/assets/javascripts/lib/*.js'
+          'app/assets/javascripts/bootstrap.js'
+          'app/assets/javascripts/filters/*.js'
+          'app/assets/javascripts/factories/*.js'
+          'app/assets/javascripts/directives/*.js'
+          'app/assets/javascripts/services/*.js'
+          'app/assets/javascripts/controllers/*.js'
         ]
-        dest: 'dist/assets/js/transparence.js'
+        dest: 'dist/assets/javascripts/transparence.js'
 
     uglify:
       all:
         files:
-          'dist/assets/js/transparence.min.js': ['dist/assets/js/transparence.js']
+          'dist/assets/javascripts/transparence.min.js': ['dist/assets/javascripts/transparence.js']
 
     less:
       development:
@@ -88,7 +88,7 @@ module.exports = (grunt) ->
               '**/*.min.js'
               '!**/sizzle.min.js'
             ]
-            dest: 'dist/vendor/js/'
+            dest: 'dist/vendor/javascripts/'
           }
           # map
           {
@@ -100,7 +100,7 @@ module.exports = (grunt) ->
               '**/angular-route.min.js.map'
               '**/jquery.min.map'
             ]
-            dest: 'dist/vendor/js/'
+            dest: 'dist/vendor/javascripts/'
           }
           # data
           {
@@ -127,7 +127,7 @@ module.exports = (grunt) ->
               '**/*.min.js'
               '!**/sizzle.min.js'
             ]
-            dest: 'dist/vendor/js/'
+            dest: 'dist/vendor/javascripts/'
           }
           # data
           {
