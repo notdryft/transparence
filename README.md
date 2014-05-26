@@ -3,7 +3,9 @@
 A tool to help with bonus calculation in a **visual** and **easy** way.
 
 
-## Install modules
+## Modules
+
+### Install
 
 Just do the following:
 ```bash
@@ -11,6 +13,16 @@ $ npm install -g grunt grunt-cli bower
 [... transparence ]$ bower install
 [... transparence ]$ npm install
 ```
+
+### Update
+
+You must do both:
+```
+[... transparence ]$ bower list
+[... transparence ]$ npm-check-updates [-u]
+```
+
+Beware though, as `npm-check-updates` tends to downgrade `karma-jasmine` to `1.5`, which will break the application.
 
 ## Build
 
