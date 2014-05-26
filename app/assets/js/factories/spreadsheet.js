@@ -2,24 +2,11 @@
 
 'use strict';
 
-transparence.factory('Spreadsheet', ['Sheet', function (Sheet) {
+transparence.factory('Spreadsheet', ['Commons', 'Sheet', function (Commons, Sheet) {
 
   return function (commons) {
-    var salary = commons.salary;
     var spreadsheet = {
-      commons: {
-        salary: {
-          mensual: salary.mensual,
-          annual: function () {
-            return this.mensual * 12;
-          },
-          rate: salary.rate,
-          taxFreeRate: function () {
-            return this.rate * 0.9;
-          }
-        },
-        startFrom: commons.startFrom
-      },
+      commons: new Commons(commons),
       sheets: []
     };
 

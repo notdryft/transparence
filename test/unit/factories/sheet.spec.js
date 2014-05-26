@@ -5,17 +5,20 @@
 
 describe('Sheet factory', function () {
 
+  var Commons;
   var Sheet;
   var Spreadsheet;
 
   beforeEach(module('Transparence'));
 
   beforeEach(inject(function ($injector) {
+    Commons = $injector.get('Commons');
     Sheet = $injector.get('Sheet');
     Spreadsheet = $injector.get('Spreadsheet');
   }));
 
   it('should exist', function () {
+    expect(Commons).not.toEqual(null);
     expect(Sheet).not.toEqual(null);
     expect(Spreadsheet).not.toEqual(null);
   });
@@ -28,7 +31,7 @@ describe('Sheet factory', function () {
       var simulation = sample.simulations[i];
       var expectedSheet = expected.sheets[i];
 
-      var sheet = new Sheet(sample.commons);
+      var sheet = new Sheet(new Commons(sample.commons));
       expect(sheet.monthCount()).toBe(0);
 
       sheet.update(simulation);
