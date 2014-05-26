@@ -53,9 +53,6 @@ transparence.factory('Sheet', ['Month', function (Month) {
             index: i,
             commons: commons,
             millis: currentMonth.getTime(),
-            taxFreeRate: function () {
-              return this.index && this.commons.salary.taxFreeRate();
-            },
             workedDays: simulation.workedDays[i]
           }));
 

@@ -44,9 +44,6 @@ describe('Month factory', function () {
           businessDays: businessDays,
           commons: sample.commons,
           index: j,
-          taxFreeRate: function () {
-            return this.index && sample.commons.salary.taxFreeRate();
-          },
           workedDays: workedDays
         });
 

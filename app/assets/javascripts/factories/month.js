@@ -6,6 +6,10 @@ transparence.factory('Month', function () {
 
   return function (sheet, month) {
 
+    function _taxFreeRate() {
+      return month.index && month.commons.salary.taxFreeRate();
+    }
+
     function _deltaHelper(sales) {
       return sales * 0.6 - 1.58 * month.commons.salary.mensual;
     }
@@ -17,7 +21,7 @@ transparence.factory('Month', function () {
     var parent = {
 
       sales: function () {
-        return month.taxFreeRate() * month.workedDays;
+        return _taxFreeRate() * month.workedDays;
       },
 
       delta: function () {
@@ -36,7 +40,7 @@ transparence.factory('Month', function () {
     parent.ideal = {
 
       sales: function () {
-        return month.taxFreeRate() * month.businessDays;
+        return _taxFreeRate() * month.businessDays;
       },
 
       delta: function () {
