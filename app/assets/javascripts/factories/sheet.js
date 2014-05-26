@@ -3,7 +3,7 @@
 
 'use strict';
 
-transparence.factory('Sheet', ['Month', function (Month) {
+transparence.factory('Sheet', ['Month', 'DaysService', function (Month, DaysService) {
 
   return function (commons) {
 
@@ -50,8 +50,9 @@ transparence.factory('Sheet', ['Month', function (Month) {
         var currentMonth = new Date(me.commons.startFrom);
         for (var i = 0; i < simulation.workedDays.length; i++) {
           me.months.push(new Month(sheet, {
-            index: i,
+            businessDays: DaysService.businessDaysInMonth(currentMonth),
             commons: commons,
+            index: i,
             millis: currentMonth.getTime(),
             workedDays: simulation.workedDays[i]
           }));
