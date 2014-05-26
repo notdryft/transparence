@@ -1,4 +1,4 @@
-/* global fixtures, angular, module, describe, it, beforeEach, afterEach, inject, spyOn, expect */
+/* global fixtures, angular, module, describe, it, beforeEach, inject, spyOn, expect */
 /* jshint loopfunc: true */
 
 'use strict';

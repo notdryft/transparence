@@ -1,4 +1,4 @@
-/* global fixtures, module, describe, it, beforeEach, afterEach, inject, spyOn, expect */
+/* global fixtures, module, describe, it, beforeEach, inject, spyOn, expect */
 
 'use strict';
 
