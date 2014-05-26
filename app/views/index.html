@@ -27,7 +27,7 @@
         <div class="form-group">
           <label for="mensualSalary">Mensual salary in &euro;</label>
           <input id="mensualSalary" class="form-control"
-                 type="number" step="10"
+                 type="number" step="10" min="0"
                  ng-model="spreadsheet.commons.salary.mensual">
         </div>
         <div class="form-group">
@@ -39,7 +39,7 @@
         <div class="form-group">
           <label for="rate">Rate in &euro;</label>
           <input id="rate" class="form-control"
-                 type="number" step="10"
+                 type="number" step="10" min="0"
                  ng-model="spreadsheet.commons.salary.rate">
         </div>
         <div class="form-group">
