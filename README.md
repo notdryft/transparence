@@ -17,7 +17,7 @@ $ npm install -g grunt grunt-cli bower
 ### Update
 
 You must do both:
-```
+```bash
 [... transparence ]$ bower list
 [... transparence ]$ npm-check-updates [-u]
 ```
