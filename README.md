@@ -19,10 +19,10 @@ $ npm install -g grunt grunt-cli bower
 You must do both:
 ```bash
 [... transparence ]$ bower list
-[... transparence ]$ npm-check-updates [-u]
+[... transparence ]$ npm-check-updates
 ```
 
-Beware though, as `npm-check-updates` tends to downgrade `karma-jasmine` to `1.5`, which will break the application.
+Beware though, as `npm-check-updates` while using optends to downgrade `karma-jasmine` to `1.5`, which will break the application.
 
 ## Build
 
