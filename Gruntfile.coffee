@@ -20,7 +20,7 @@ module.exports = (grunt) ->
       all: [
         'Gruntfile.js'
         'karma.conf.js'
-        'app/assets/js/**/*.js'
+        'app/assets/javascripts/**/*.js'
         'test/unit/**/*.js'
       ]
       options:
