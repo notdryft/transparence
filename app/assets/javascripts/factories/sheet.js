@@ -43,13 +43,11 @@ transparence.factory('Sheet', ['Month', 'DaysService', function (Month, DaysServ
       },
 
       update: function (simulation) {
-        var me = this;
+        this.months = [];
 
-        me.months = [];
-
-        var currentMonth = new Date(me.commons.startFrom);
+        var currentMonth = new Date(this.commons.startFrom);
         for (var i = 0; i < simulation.workedDays.length; i++) {
-          me.months.push(new Month(sheet, {
+          this.months.push(new Month(sheet, {
             businessDays: DaysService.businessDaysInMonth(currentMonth),
             commons: commons,
             index: i,
