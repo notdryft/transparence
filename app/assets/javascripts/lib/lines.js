@@ -37,8 +37,6 @@ d3.chart.lines = function () {
     g.append('g')
       .classed('yaxis axis', true)
       .attr('transform', 'translate(' + [twice, thickness] + ')');
-
-    update();
   }
 
   function update() {

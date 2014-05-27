@@ -23,7 +23,6 @@ transparence.directive('chart', function () {
 
       var lines =
         d3.chart.lines()
-          .data([])
           .width(attributes.width)
           .height(attributes.height)
           .thickness(attributes.thickness);
