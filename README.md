@@ -22,7 +22,7 @@ You must do both:
 [... transparence ]$ npm-check-updates
 ```
 
-Beware though, as `npm-check-updates` while using optends to downgrade `karma-jasmine` to `1.5`, which will break the application.
+Beware though, as `npm-check-updates` tends to downgrade `karma-jasmine` to `1.5`, which will break the application.
 
 ## Build
 
