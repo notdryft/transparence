@@ -10,7 +10,6 @@ describe('Lines chart', function () {
     expect(d3.chart.lines).not.toEqual(null);
   });
 
-
   it('should not be initialized by default', function () {
     var lines = d3.chart.lines();
 
