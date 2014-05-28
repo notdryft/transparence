@@ -37,6 +37,7 @@ module.exports = function (config) {
       'test/unit/fixtures/fixtures.js',
       // tests
       'test/unit/fixtures/*.spec.js',
+      'test/unit/lib/*.spec.js',
       'test/unit/factories/*.spec.js',
       'test/unit/services/*.spec.js',
       'test/unit/controllers/*.spec.js'
