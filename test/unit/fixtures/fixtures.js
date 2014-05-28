@@ -25,6 +25,23 @@ var fixtures = {
       }
     }
   },
+  lines: {
+    sample: {
+      empty: []
+    },
+    expected: {
+      empty: [
+        {
+          name: 'Real bonus',
+          values: []
+        },
+        {
+          name: 'Ideal bonus',
+          values: []
+        }
+      ]
+    }
+  },
   spreadsheet: {
     sample: {
       commons: {

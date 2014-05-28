@@ -199,7 +199,7 @@ d3.chart.lines = function () {
 
   chart.width = function (value) {
     if (!arguments.length) {
-      return data;
+      return width;
     }
 
     width = value;
@@ -210,7 +210,7 @@ d3.chart.lines = function () {
 
   chart.height = function (value) {
     if (!arguments.length) {
-      return data;
+      return height;
     }
 
     height = value;
@@ -221,7 +221,7 @@ d3.chart.lines = function () {
 
   chart.thickness = function (value) {
     if (!arguments.length) {
-      return data;
+      return thickness;
     }
 
     thickness = value;
