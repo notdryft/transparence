@@ -154,7 +154,7 @@ d3.chart.lines = function () {
     });
   }
 
-  function _updateAxis(xScale, yScale) {
+  function _updateXAxis(xScale) {
     var xAxis = d3.svg.axis()
       .scale(xScale)
       .orient('bottom')
@@ -166,7 +166,9 @@ d3.chart.lines = function () {
       .call(xAxis)
       .selectAll('.tick text')
       .call(_lineWrapIfMatch, /\s+/);
+  }
 
+  function _updateYAxis(yScale) {
     var yAxis = d3.svg.axis()
       .scale(yScale)
       .orient('left')
@@ -175,6 +177,11 @@ d3.chart.lines = function () {
     g.select('.yaxis')
       .transition()
       .call(yAxis);
+  }
+
+  function _updateAxis(xScale, yScale) {
+    _updateXAxis(xScale);
+    _updateYAxis(yScale);
   }
 
   chart.update = update;
