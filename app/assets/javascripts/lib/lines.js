@@ -13,7 +13,6 @@ d3.chart.lines = function () {
   var height;
   var thickness;
 
-  var _data;
   var _innerWidth;
   var _innerHeight;
 
@@ -39,18 +38,32 @@ d3.chart.lines = function () {
       .attr('transform', 'translate(' + [twice, thickness] + ')');
   }
 
-  function update() {
-    var xScale = d3.time.scale()
-      .domain(d3.extent(_data, function (d) {
-        return d.millis;
-      }))
-      .range([0, _innerWidth]);
+  function _evaluate(data, fn, attribute) {
 
-    var maxBonus = d3.max(data, function (d) {
-      return d3.max(d.values, function (dd) {
-        return dd.bonus;
+    return d3[fn](data, function (d) {
+      return d3[fn](d.values, function (dd) {
+        return dd[attribute];
       });
     });
+  }
+
+  function _min(data, attribute) {
+    return _evaluate(data, 'min', attribute);
+  }
+
+  function _max(data, attribute) {
+    return _evaluate(data, 'max', attribute);
+  }
+
+  function update() {
+    var xScale = d3.time.scale()
+      .domain([
+        _min(data, 'millis'),
+        _max(data, 'millis')
+      ])
+      .range([0, _innerWidth]);
+
+    var maxBonus = _max(data, 'bonus');
 
     var yScale = d3.scale.linear()
       .domain([0, maxBonus])
@@ -141,7 +154,9 @@ d3.chart.lines = function () {
     var xAxis = d3.svg.axis()
       .scale(xScale)
       .orient('bottom')
-      .ticks(_data.length)
+      .ticks(d3.max(data, function (d) {
+        return d.values.length;
+      }))
       .tickFormat(_dateFormat);
 
     g.select('.xaxis')
@@ -191,8 +206,7 @@ d3.chart.lines = function () {
       return data;
     }
 
-    _data = value;
-    data = _mapData(_data);
+    data = _mapData(value);
 
     return chart;
   };
