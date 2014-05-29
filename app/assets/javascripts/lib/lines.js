@@ -115,6 +115,12 @@ d3.chart.lines = function () {
       });
   }
 
+  function _ticks(data) {
+    return d3.max(data, function (d) {
+      return d.values.length;
+    });
+  }
+
   function _dateFormat(date) {
     if (date.getMonth() === 0) {
       return d3.time.format('%b %y')(date);
@@ -154,9 +160,7 @@ d3.chart.lines = function () {
     var xAxis = d3.svg.axis()
       .scale(xScale)
       .orient('bottom')
-      .ticks(d3.max(data, function (d) {
-        return d.values.length;
-      }))
+      .ticks(_ticks(data))
       .tickFormat(_dateFormat);
 
     g.select('.xaxis')
