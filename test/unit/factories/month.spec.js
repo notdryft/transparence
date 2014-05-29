@@ -1,5 +1,4 @@
 /* global fixtures, module, describe, it, beforeEach, inject, spyOn, expect */
-/* jshint loopfunc: true */
 
 'use strict';
 

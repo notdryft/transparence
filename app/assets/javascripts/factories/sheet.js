@@ -1,5 +1,4 @@
 /* global angular, transparence */
-/* jshint loopfunc: true */
 
 'use strict';
 
