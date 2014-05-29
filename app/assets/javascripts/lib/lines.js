@@ -38,8 +38,7 @@ d3.chart.lines = function () {
       .attr('transform', 'translate(' + [twice, thickness] + ')');
   }
 
-  function _evaluate(data, fn, attribute) {
-
+  function _m(data, fn, attribute) {
     return d3[fn](data, function (d) {
       return d3[fn](d.values, function (dd) {
         return dd[attribute];
@@ -47,26 +46,25 @@ d3.chart.lines = function () {
     });
   }
 
-  function _min(data, attribute) {
-    return _evaluate(data, 'min', attribute);
+  function _millisExtent(data) {
+
+    return [
+      _m(data, 'min', 'millis'),
+      _m(data, 'max', 'millis')
+    ];
   }
 
-  function _max(data, attribute) {
-    return _evaluate(data, 'max', attribute);
+  function _maxBonus(data) {
+    return _m(data, 'max', 'bonus');
   }
 
   function update() {
     var xScale = d3.time.scale()
-      .domain([
-        _min(data, 'millis'),
-        _max(data, 'millis')
-      ])
+      .domain(_millisExtent(data))
       .range([0, _innerWidth]);
 
-    var maxBonus = _max(data, 'bonus');
-
     var yScale = d3.scale.linear()
-      .domain([0, maxBonus])
+      .domain([0, _maxBonus(data)])
       .range([_innerHeight, 0]);
 
     var line = d3.svg.line()
