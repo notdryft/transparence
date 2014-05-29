@@ -21,5 +21,6 @@ build
 dist/index.html
 dist/assets/css
 dist/assets/javascripts
+dist/assets/views
 dist/data
 dist/vendor

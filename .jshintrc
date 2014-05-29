@@ -5,6 +5,8 @@
     "d3": true,
     "transparence": true,
 
+    "escape": true,
+
     "afterEach": true,
     "beforeEach": true,
     "describe": true,

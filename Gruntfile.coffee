@@ -38,6 +38,7 @@ module.exports = (grunt) ->
           'app/assets/javascripts/directives/*.js'
           'app/assets/javascripts/services/*.js'
           'app/assets/javascripts/controllers/*.js'
+          'app/assets/javascripts/routes.js'
         ]
         dest: 'dist/assets/javascripts/transparence.js'
 
@@ -68,6 +69,16 @@ module.exports = (grunt) ->
         dest: 'dist/index.html'
 
     copy:
+      templates:
+        files: [
+          # html
+          {
+            expand: true
+            cwd: 'app'
+            src: 'views/*/**/*.html'
+            dest: 'dist/assets'
+          }
+        ]
       development:
         files: [
           # css
@@ -178,6 +189,7 @@ module.exports = (grunt) ->
     'concat'
     'less:development'
     'preprocess:index'
+    'copy:templates'
     'copy:development'
   ])
   grunt.registerTask('test', ['compile', 'karma:unit'])
@@ -192,6 +204,7 @@ module.exports = (grunt) ->
     'uglify'
     'less:production'
     'preprocess:index'
+    'copy:templates'
     'copy:production'
     'clean:after'
   ])

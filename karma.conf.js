@@ -33,6 +33,7 @@ module.exports = function (config) {
       'app/assets/javascripts/factories/*.js',
       'app/assets/javascripts/services/*.js',
       'app/assets/javascripts/controllers/*.js',
+      'app/assets/javascripts/routes.js',
       // fixtures
       'test/unit/fixtures/fixtures.js',
       // tests

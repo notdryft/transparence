@@ -27,7 +27,7 @@ describe('Spreadsheet service', function () {
 
   var path = '/data/sample.json';
 
-  it('should return json content when read', function (done) {
+  xit('should return json content when read', function (done) {
     var message = {
       key: 'value'
     };

@@ -1,0 +1,77 @@
+<header>
+  <div class="info">
+    <form role="form">
+      <div class="form-group">
+        <label for="mensualSalary">Mensual salary in &euro;</label>
+        <input id="mensualSalary" class="form-control"
+               type="number" step="10" min="0"
+               ng-model="spreadsheet.commons.salary.mensual">
+      </div>
+      <div class="form-group">
+        <label for="annualSalary">Annual salary</label>
+        <input id="annualSalary" class="form-control"
+               value="{{ spreadsheet.commons.salary.annual() }}"
+               disabled>
+      </div>
+      <div class="form-group">
+        <label for="rate">Rate in &euro;</label>
+        <input id="rate" class="form-control"
+               type="number" step="10" min="0"
+               ng-model="spreadsheet.commons.salary.rate">
+      </div>
+      <div class="form-group">
+        <label for="taxFreeRate">Tax free rate</label>
+        <input id="taxFreeRate" class="form-control"
+               value="{{ spreadsheet.commons.salary.taxFreeRate() | number: 2 }}"
+               disabled>
+      </div>
+    </form>
+  </div>
+  <div class="chart" width="768" height="432" thickness="30" data="spreadsheet"></div>
+</header>
+<section>
+  <div class="tab" ng-repeat="sheet in spreadsheet.sheets">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Period</th>
+        <th>Worked days</th>
+        <th>Sales</th>
+        <th>Tax-free rate</th>
+        <th>&Delta; of generated sales</th>
+        <th>Mean of &Delta; generated sales</th>
+        <th>Bonus</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="month in sheet.months">
+        <td>
+          {{ month.millis | date: 'MMMM' }}
+          <span class="below">{{ month.millis | date: 'yyyy' }}</span>
+        </td>
+        <td class="text-right">
+          {{ month.workedDays }}
+          <span class="follow">{{ month.businessDays }}</span>
+        </td>
+        <td class="text-right">
+          {{ month.sales() | number: 2 }} &euro;
+          <span class="below">{{ month.ideal.sales() | number: 2 }} &euro;</span>
+        </td>
+        <td class="text-right">{{ month.taxFreeRate() | number: 2 }} &euro;</td>
+        <td class="text-right">
+          {{ month.delta() | number: 2 }} &euro;
+          <span class="below">{{ month.ideal.delta() | number: 2 }} &euro;</span>
+        </td>
+        <td class="text-right">
+          {{ month.mean() | number: 2 }} &euro;
+          <span class="below">{{ month.ideal.mean() | number: 2 }} &euro;</span>
+        </td>
+        <td class="text-right">
+          {{ month.bonus() | number: 2 }} &euro;
+          <span class="below">{{ month.ideal.bonus() | number: 2 }} &euro;</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
