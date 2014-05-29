@@ -1,5 +1,3 @@
-/* global transparence */
-
 'use strict';
 
 transparence.factory('Commons', function () {

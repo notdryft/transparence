@@ -1,5 +1,3 @@
-/* global d3 */
-
 'use strict';
 
 if (!d3.chart) {

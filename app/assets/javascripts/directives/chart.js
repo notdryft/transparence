@@ -1,5 +1,3 @@
-/* global d3, transparence */
-
 'use strict';
 
 transparence.directive('chart', function () {

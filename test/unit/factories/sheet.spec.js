@@ -1,5 +1,3 @@
-/* global fixtures, angular, module, describe, it, beforeEach, inject, spyOn, expect */
-
 'use strict';
 
 describe('Sheet factory', function () {

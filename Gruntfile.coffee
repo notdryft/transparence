@@ -23,12 +23,12 @@ module.exports = (grunt) ->
         'test/unit/**/*.js'
       ]
       options:
-        globalstrict: true
+        jshintrc: true
 
     concat:
       options:
         process: (src, path) ->
-          '// Source: ' + path + '\n' + src.replace(/\/\* .* \*\/\n*'use strict';\n/g, '')
+          '// Source: ' + path + '\n' + src.replace(/'use strict';\n/g, '')
       all:
         src: [
           'app/assets/javascripts/lib/*.js'

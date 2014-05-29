@@ -1,5 +1,3 @@
-/* global fixtures, module, describe, it, beforeEach, afterEach, inject, expect */
-
 'use strict';
 
 describe('Spreadsheet service', function () {

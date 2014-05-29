@@ -1,5 +1,3 @@
-/* global transparence */
-
 'use strict';
 
 transparence.service('SpreadsheetService', ['$http', 'Spreadsheet', function ($http, Spreadsheet) {

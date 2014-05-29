@@ -1,5 +1,3 @@
-/* global fixtures, module, describe, it, beforeEach, inject, spyOn, expect */
-
 'use strict';
 
 describe('Spreadsheet factory', function () {

@@ -1,5 +1,3 @@
-/* global angular, transparence */
-
 'use strict';
 
 transparence.factory('Sheet', ['Month', 'DaysService', function (Month, DaysService) {

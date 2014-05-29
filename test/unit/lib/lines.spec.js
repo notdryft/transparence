@@ -1,5 +1,3 @@
-/* global d3, fixtures, describe, it, spyOn, expect */
-
 'use strict';
 
 describe('Lines chart', function () {

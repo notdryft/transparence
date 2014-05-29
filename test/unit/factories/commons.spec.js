@@ -1,5 +1,3 @@
-/* global fixtures, module, describe, it, beforeEach, inject, expect */
-
 'use strict';
 
 describe('Commons factory', function () {

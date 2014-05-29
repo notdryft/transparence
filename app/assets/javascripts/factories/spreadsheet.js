@@ -1,5 +1,3 @@
-/* global angular, transparence */
-
 'use strict';
 
 transparence.factory('Spreadsheet', ['Commons', 'Sheet', function (Commons, Sheet) {

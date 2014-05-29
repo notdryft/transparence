@@ -1,5 +1,3 @@
-/* global fixtures, describe, it, expect */
-
 'use strict';
 
 describe('Fixtures', function () {
