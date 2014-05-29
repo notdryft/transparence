@@ -18,7 +18,6 @@ module.exports = (grunt) ->
 
     jshint:
       all: [
-        'Gruntfile.js'
         'karma.conf.js'
         'app/assets/javascripts/**/*.js'
         'test/unit/**/*.js'
