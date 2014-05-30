@@ -42,6 +42,65 @@ var fixtures = {
       ]
     }
   },
+  gist: {
+    sample: {
+      full: {
+        files: {
+          'whatever.json': {
+            content: '{\n  "commons": {\n    "salary": {\n      "mensual": 2917,\n      "rate": 750\n    },\n    "startFrom": "2013/10"\n  },\n  "simulations": [\n    {\n      "workedDays": [\n        0,\n        10,\n        13,\n        15,\n        19.5,\n        21,\n        13,\n        19,\n        20,\n        22,\n        20,\n        22,\n        23,\n        19,\n        22,\n        21,\n        20,\n        22,\n        21,\n        17,\n        22,\n        22,\n        21,\n        22\n      ]\n    }\n  ]\n}\n'
+          }
+        },
+        id: '6ab1bfd66cac23ef8901'
+      },
+      id: '6ab1bfd66cac23ef8901',
+      malformed: {
+        files: {},
+        id: '6ab1bfd66cac23ef8901'
+      },
+      url: 'https://api.github.com/gists/6ab1bfd66cac23ef8901'
+    },
+    expected: {
+      full: {
+        commons: {
+          salary: {
+            mensual: 2917,
+            rate: 750
+          },
+          startFrom: '2013/10'
+        },
+        simulations: [
+          {
+            workedDays: [
+              0,
+              10,
+              13,
+              15,
+              19.5,
+              21,
+              13,
+              19,
+              20,
+              22,
+              20,
+              22,
+              23,
+              19,
+              22,
+              21,
+              20,
+              22,
+              21,
+              17,
+              22,
+              22,
+              21,
+              22
+            ]
+          }
+        ]
+      }
+    }
+  },
   spreadsheet: {
     sample: {
       commons: {

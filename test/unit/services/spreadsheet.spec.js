@@ -2,46 +2,16 @@
 
 describe('Spreadsheet service', function () {
 
-  var $httpBackend;
-  var $timeout;
   var SpreadsheetService;
 
   beforeEach(module('Transparence'));
 
   beforeEach(inject(function ($injector) {
-    $httpBackend = $injector.get('$httpBackend');
-    $timeout = $injector.get('$timeout');
     SpreadsheetService = $injector.get('SpreadsheetService');
   }));
 
-  afterEach(function () {
-    $timeout(function () { // Error: [$rootScope:inprog]
-      $httpBackend.verifyNoOutstandingExpectation();
-      $httpBackend.verifyNoOutstandingRequest();
-    }, 0);
-  });
-
   it('should exist', function () {
     expect(SpreadsheetService).not.toEqual(null);
-  });
-
-  var path = '/data/sample.json';
-
-  xit('should return json content when read', function (done) {
-    var message = {
-      key: 'value'
-    };
-
-    $httpBackend.expectGET(path)
-      .respond(200, message);
-
-    SpreadsheetService.read(path)
-      .then(function (d) {
-        expect(d.data.key).toBe('value');
-      })
-      .finally(done);
-
-    $httpBackend.flush();
   });
 
   it('should compute json data correctly', function () {

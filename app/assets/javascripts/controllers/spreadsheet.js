@@ -1,6 +1,6 @@
 'use strict';
 
-transparence.controller('SpreadsheetController', ['$routeParams', '$scope', 'SpreadsheetService', function ($routeParams, $scope, SpreadsheetService) {
+transparence.controller('SpreadsheetController', ['$routeParams', '$scope', 'GistService', 'SpreadsheetService', function ($routeParams, $scope, GistService, SpreadsheetService) {
 
   function updateScope(data) {
     var spreadsheet = SpreadsheetService.compute(data.commons);
@@ -12,12 +12,8 @@ transparence.controller('SpreadsheetController', ['$routeParams', '$scope', 'Spr
   }
 
   if ($routeParams.id) {
-    SpreadsheetService
-      .gist($routeParams.id)
-      .then(function (gist) {
-        var data = JSON.parse(gist.data.files['whatever.json'].content);
-
-        updateScope(data);
-      });
+    GistService
+      .read($routeParams.id)
+      .then(updateScope);
   }
 }]);
