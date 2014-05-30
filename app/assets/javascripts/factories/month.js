@@ -18,6 +18,8 @@ transparence.factory('Month', function () {
 
     var parent = {
 
+      taxFreeRate: _taxFreeRate,
+
       sales: function () {
         return _taxFreeRate() * month.workedDays;
       },
