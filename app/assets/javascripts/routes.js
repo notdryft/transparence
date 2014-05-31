@@ -3,7 +3,7 @@
 transparence.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
   function templateFor(controller, action) {
-    return ['/assets', 'views', controller , action].join('/') + '.html';
+    return ['assets', 'views', controller , action].join('/') + '.html';
   }
 
   $routeProvider
