@@ -37,7 +37,7 @@ module.exports = (grunt) ->
           'app/assets/javascripts/factories/*.js'
           'app/assets/javascripts/directives/*.js'
           'app/assets/javascripts/services/*.js'
-          'app/assets/javascripts/controllers/*.js'
+          'app/assets/javascripts/controllers/**/*.js'
           'app/assets/javascripts/routes.js'
         ]
         dest: 'dist/assets/javascripts/transparence.js'

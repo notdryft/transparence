@@ -2,24 +2,24 @@
 
 transparence.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 
-  function templateFor(type, action) {
-    return ['assets', 'views', type , action].join('/') + '.html';
+  function templateFor(controller, action) {
+    return ['/assets', 'views', controller , action].join('/') + '.html';
   }
 
   $routeProvider
-    .when('/', {
+    .when('/spreadsheets', {
       templateUrl: templateFor('spreadsheets', 'index'),
-      controller: 'SpreadsheetController'
+      controller: 'SpreadsheetIndexController'
     })
-    .when('/new', {
+    .when('/spreadsheets/new', {
       templateUrl: templateFor('spreadsheets', 'new'),
-      controller: 'SpreadsheetController'
+      controller: 'SpreadsheetNewController'
     })
-    .when('/:id', {
+    .when('/spreadsheets/:id', {
       templateUrl: templateFor('spreadsheets', 'show'),
-      controller: 'SpreadsheetController'
+      controller: 'SpreadsheetShowController'
     })
-    .otherwise({redirectTo: '/'});
+    .otherwise({redirectTo: '/spreadsheets'});
 
   $locationProvider.html5Mode(true);
 }]);

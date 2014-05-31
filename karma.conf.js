@@ -32,7 +32,7 @@ module.exports = function (config) {
       'app/assets/javascripts/directives/*.js',
       'app/assets/javascripts/factories/*.js',
       'app/assets/javascripts/services/*.js',
-      'app/assets/javascripts/controllers/*.js',
+      'app/assets/javascripts/controllers/**/*.js',
       'app/assets/javascripts/routes.js',
       // fixtures
       'test/unit/fixtures/fixtures.js',
@@ -41,7 +41,6 @@ module.exports = function (config) {
       'test/unit/lib/*.spec.js',
       'test/unit/factories/*.spec.js',
       'test/unit/services/*.spec.js',
-      'test/unit/controllers/*.spec.js'
     ],
 
     preprocessors: {

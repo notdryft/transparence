@@ -5,48 +5,50 @@
   max-width: @width;
   min-width: @width;
 
-  header.charted {
-    display: flex;
-  }
-
-  .info {
-    height: @header-height;
-    width: @info-width;
-  }
-
-  .chart {
-    height: @header-height;
-    width: @chart-width;
-
-    .bonuses path {
-      fill: none;
-      stroke-width: 1.5px;
+  section {
+    &.show {
+      display: flex;
     }
 
-    .axis {
-      path,
-      line {
+    .info {
+      height: @header-height;
+      width: @info-width;
+    }
+
+    .chart {
+      height: @header-height;
+      width: @chart-width;
+
+      .bonuses path {
         fill: none;
-        stroke: black;
-        shape-rendering: crispEdges;
+        stroke-width: 1.5px;
       }
 
-      text {
-        fill: black;
+      .axis {
+        path,
+        line {
+          fill: none;
+          stroke: black;
+          shape-rendering: crispEdges;
+        }
+
+        text {
+          fill: black;
+        }
       }
     }
-  }
 
-  .table td span {
-    color: #aaa;
+    .table td span {
+      color: #aaa;
 
-    &.below {
-      display: block;
-      font-size: 90%
-    }
+      &.below {
+        display: block;
+        font-size: 90%
+      }
 
-    &.follow:before {
-      content: ' / '
+      &.follow:before {
+        content: ' / '
+      }
     }
   }
 
