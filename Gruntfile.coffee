@@ -7,7 +7,7 @@ module.exports = (grunt) ->
 
     clean:
       after:
-        src: 'dist/assets/js/transparence.js'
+        src: 'dist/assets/javascripts/transparence.js'
       all:
         src: 'dist'
       package:
