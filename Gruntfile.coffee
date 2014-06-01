@@ -120,6 +120,13 @@ module.exports = (grunt) ->
         ]
       production:
         files: [
+          # htaccess
+          {
+            expand: true
+            flatten: true
+            src: 'app/views/.htaccess'
+            dest: 'dist/'
+          }
           # css
           {
             expand: true

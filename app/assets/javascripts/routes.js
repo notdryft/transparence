@@ -21,5 +21,5 @@ transparence.config(['$routeProvider', '$locationProvider', function ($routeProv
     })
     .otherwise({redirectTo: '/spreadsheets'});
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true).hashPrefix('!');
 }]);

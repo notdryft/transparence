@@ -18,6 +18,7 @@ coverage
 build
 
 # dist
+dist/.htaccess
 dist/index.html
 dist/assets/css
 dist/assets/javascripts
