@@ -38,17 +38,17 @@ Available tasks are:
 * `uglify[:all]`
 * `less[:development, :production]`
 * `preprocess[:index]`
-* `copy[:development, :production]`
+* `copy[:templates, :development, :production]`
 * `karma[:unit]`
 * `shell[:package]`
 
 Main tasks are:
 * `compile`: development oriented compiling
- - `clean:all`, `clean:package`, `jshint`, `concat`, `less:development`, `preprocess:index`, `copy:development`
+ - `clean:all`, `clean:package`, `jshint`, `concat`, `less:development`, `preprocess:index`, `copy:templates`, `copy:development`
 * `test`: development oriented compiling and testing
  - `compile`, `karma:unit`
 * `prepare`: production oriented compiling
- - `clean:all`, `clean:package`, `jshint`, `concat`, `uglify`, `less:production`, `preprocess:index`, `copy:production`, `clean:after`
+ - `clean:all`, `clean:package`, `jshint`, `concat`, `uglify`, `less:production`, `preprocess:index`, `copy:templates`, `copy:production`, `clean:after`
 * `confirm`: production oriented compiling and testing
  - `prepare`, `karma:unit`
 * `package`: which does `prepare` and `confirm` plus project packaging
