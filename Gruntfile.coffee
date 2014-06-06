@@ -112,11 +112,6 @@ module.exports = (grunt) ->
             ]
             dest: 'dist/vendor/javascripts/'
           }
-          # data
-          {
-            src: 'app/data/sample.json'
-            dest: 'dist/data/sample.json'
-          }
         ]
       production:
         files: [
@@ -145,11 +140,6 @@ module.exports = (grunt) ->
               '!**/sizzle.min.js'
             ]
             dest: 'dist/vendor/javascripts/'
-          }
-          # data
-          {
-            src: 'app/data/sample.json'
-            dest: 'dist/data/sample.json'
           }
         ]
 
