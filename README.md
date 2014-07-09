@@ -12,7 +12,7 @@ First, to install the global dependencies, just do the following:
 $ npm install -g grunt grunt-cli bower
 ```
 
-Then, on the cloned local repository directory:
+Then, in the cloned local repository directory:
 ```bash
 [... transparence ]$ bower install
 [... transparence ]$ npm install
