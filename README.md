@@ -7,9 +7,13 @@ A tool to help with bonus calculation in a **visual** and **easy** way.
 
 ### Install
 
-Just do the following:
+First, to install the global dependencies, just do the following:
 ```bash
 $ npm install -g grunt grunt-cli bower
+```
+
+Then, on the cloned local repository directory:
+```bash
 [... transparence ]$ bower install
 [... transparence ]$ npm install
 ```
