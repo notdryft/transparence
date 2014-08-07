@@ -81,6 +81,14 @@ module.exports = (grunt) ->
         ]
       development:
         files: [
+          # fonts
+          {
+            expand: true
+            flatten: true
+            cwd: 'bower_components/'
+            src: 'bootstrap/fonts/*.*'
+            dest: 'dist/vendor/fonts/'
+          }
           # css
           {
             expand: true
@@ -121,6 +129,14 @@ module.exports = (grunt) ->
             flatten: true
             src: 'app/views/.htaccess'
             dest: 'dist/'
+          }
+          # fonts
+          {
+            expand: true
+            flatten: true
+            cwd: 'bower_components/'
+            src: 'bootstrap/fonts/*.*'
+            dest: 'dist/vendor/fonts/'
           }
           # css
           {

@@ -1,5 +1,5 @@
-<section class="charted">
-  <div class="info">
+<section class="row-fluid">
+  <div class="info col-md-2 col-sm-3 col-xs-12">
     <form role="form">
       <div class="form-group">
         <label for="mensualSalary">Mensual salary in &euro;</label>
@@ -27,17 +27,19 @@
       </div>
     </form>
   </div>
-  <div class="chart" width="768" height="432" thickness="30" data="spreadsheet"></div>
+  <div class="chart-wrapper col-md-10 col-sm-9 col-xs-12">
+    <chart width="768" height="432" thickness="30" data="spreadsheet"></chart>
+  </div>
 </section>
-<section>
-  <div class="tab" ng-repeat="sheet in spreadsheet.sheets">
+<section class="row-fluid">
+  <div class="tab col-xs-12" ng-repeat="sheet in spreadsheet.sheets">
     <table class="table table-striped">
       <thead>
       <tr>
         <th>Period</th>
         <th>Worked days</th>
         <th>Sales</th>
-        <th>Tax-free rate</th>
+        <th class="hidden-xs hidden-sm">Tax-free rate</th>
         <th>&Delta; of generated sales</th>
         <th>Mean of &Delta; generated sales</th>
         <th>Bonus</th>
@@ -57,7 +59,7 @@
           {{ month.sales() | number: 2 }} &euro;
           <span class="below">{{ month.ideal.sales() | number: 2 }} &euro;</span>
         </td>
-        <td class="text-right">{{ month.taxFreeRate() | number: 2 }} &euro;</td>
+        <td class="text-right hidden-xs hidden-sm">{{ month.taxFreeRate() | number: 2 }} &euro;</td>
         <td class="text-right">
           {{ month.delta() | number: 2 }} &euro;
           <span class="below">{{ month.ideal.delta() | number: 2 }} &euro;</span>

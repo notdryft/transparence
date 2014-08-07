@@ -27,12 +27,18 @@
 
 <div class="container">
 
-  <header>
-    <h1>Transparence</h1>
+  <header class="row-fluid">
+    <div class="col-xs-12">
+      <h1>Transparence</h1>
+    </div>
   </header>
-  <div class="wrapper" ng-view></div>
-  <footer class="text-right">
-    <code><!-- @echo version --></code>
+
+  <div class="wrapper clearfix" ng-view></div>
+
+  <footer class="row-fluid text-right">
+    <div class="col-xs-12">
+      <code><!-- @echo version --></code>
+    </div>
   </footer>
 </div>
 

@@ -1,20 +1,40 @@
+/* global console */
 'use strict';
 
-transparence.directive('chart', function () {
+transparence.directive('chart', ['$document', '$window', function ($document, $window) {
 
   return {
-    restrict: 'C',
+    restrict: 'E',
     scope: {
       data: '='
     },
 
     link: function (scope, elements, attributes) {
-      var svg = d3.select(elements[0])
-        .append('svg')
+      var chart = d3.select(elements[0]);
+      var svg = chart.append('svg')
         .attr({
           width: attributes.width,
-          height: attributes.height
+          height: attributes.height,
+          viewBox: '0 0 ' + attributes.width + ' ' + attributes.height,
+          preserveAspectRatio: "xMidYMid"
         });
+
+      var wrapper = d3.select('.chart-wrapper');
+      var aspectRatio = attributes.width / attributes.height;
+
+      function updateSize() {
+        var targetWidth = parseInt(wrapper.style('width')) -
+          parseInt(wrapper.style('padding-left')) -
+          parseInt(wrapper.style('padding-right'));
+
+        svg.attr({
+          width: targetWidth,
+          height: targetWidth / aspectRatio
+        });
+      }
+
+      $document.ready(updateSize);
+      d3.select($window).on('resize', updateSize);
 
       var lgroup = svg.append('g')
         .classed('lines-container', true);
@@ -36,4 +56,4 @@ transparence.directive('chart', function () {
       }, true);
     }
   };
-});
+}]);
