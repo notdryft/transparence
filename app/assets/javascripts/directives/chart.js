@@ -34,7 +34,11 @@ transparence.directive('chart', ['$document', '$window', function ($document, $w
       }
 
       $document.ready(updateSize);
-      d3.select($window).on('resize', updateSize);
+      angular.element($window).bind('resize', function () {
+        updateSize();
+
+        scope.$apply();
+      });
 
       var lgroup = svg.append('g')
         .classed('lines-container', true);
