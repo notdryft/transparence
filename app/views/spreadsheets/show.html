@@ -1,25 +1,25 @@
 <section class="row-fluid">
-  <div class="info col-md-2 col-sm-3 col-xs-12">
+  <div class="form-wrapper col-lg-2 col-sm-3 col-xs-12">
     <form role="form">
-      <div class="form-group">
+      <div class="form-group col-sm-12 col-xs-6">
         <label for="mensualSalary">Mensual salary in &euro;</label>
         <input id="mensualSalary" class="form-control"
                type="number" step="10" min="0"
                ng-model="spreadsheet.commons.salary.mensual">
       </div>
-      <div class="form-group">
+      <div class="form-group col-sm-12 col-xs-6">
         <label for="annualSalary">Annual salary</label>
         <input id="annualSalary" class="form-control"
                value="{{ spreadsheet.commons.salary.annual() }}"
                disabled>
       </div>
-      <div class="form-group">
+      <div class="form-group col-sm-12 col-xs-6">
         <label for="rate">Rate in &euro;</label>
         <input id="rate" class="form-control"
                type="number" step="10" min="0"
                ng-model="spreadsheet.commons.salary.rate">
       </div>
-      <div class="form-group">
+      <div class="form-group col-sm-12 col-xs-6">
         <label for="taxFreeRate">Tax free rate</label>
         <input id="taxFreeRate" class="form-control"
                value="{{ spreadsheet.commons.salary.taxFreeRate() | number: 2 }}"
@@ -27,7 +27,7 @@
       </div>
     </form>
   </div>
-  <div class="chart-wrapper col-md-10 col-sm-9 col-xs-12">
+  <div class="chart-wrapper col-lg-10 col-sm-9 col-xs-12">
     <chart width="768" height="432" thickness="30" data="spreadsheet"></chart>
   </div>
 </section>

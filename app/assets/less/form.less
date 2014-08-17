@@ -1,0 +1,21 @@
+
+form {
+
+  .col-sm-12,
+  .col-xs-6 {
+    padding: 0;
+  }
+}
+
+@media (max-width: 767px) {
+
+  form .form-group {
+
+    &:nth-child(odd) {
+      padding-right: 15px;
+    }
+    &:nth-child(even) {
+      padding-left: 15px;
+    }
+  }
+}
