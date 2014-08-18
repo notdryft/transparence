@@ -40,8 +40,8 @@
         <th>Worked days</th>
         <th>Sales</th>
         <th class="hidden-xs hidden-sm">Tax-free rate</th>
-        <th class="hidden-xs hidden-sm">&Delta; of generated sales</th>
-        <th>Mean of &Delta; generated sales</th>
+        <th class="hidden-xs hidden-sm">&Delta;&nbsp;of generated sales</th>
+        <th>Mean&nbsp;of&nbsp;&Delta; generated sales</th>
         <th>Bonus</th>
       </tr>
       </thead>
@@ -58,20 +58,20 @@
           <span class="follow">{{ month.businessDays }}</span>
         </td>
         <td class="text-right">
-          {{ month.sales() | number: 2 }} &euro;
+          {{ month.sales() | number: 2 }}&nbsp;&euro;
           <span class="below">{{ month.ideal.sales() | number: 2 }} &euro;</span>
         </td>
         <td class="text-right hidden-xs hidden-sm">{{ month.taxFreeRate() | number: 2 }} &euro;</td>
         <td class="text-right hidden-xs hidden-sm">
-          {{ month.delta() | number: 2 }} &euro;
+          {{ month.delta() | number: 2 }}&nbsp;&euro;
           <span class="below">{{ month.ideal.delta() | number: 2 }} &euro;</span>
         </td>
         <td class="text-right">
-          {{ month.mean() | number: 2 }} &euro;
+          {{ month.mean() | number: 2 }}&nbsp;&euro;
           <span class="below">{{ month.ideal.mean() | number: 2 }} &euro;</span>
         </td>
         <td class="text-right">
-          {{ month.bonus() | number: 2 }} &euro;
+          {{ month.bonus() | number: 2 }}&nbsp;&euro;
           <span class="below">{{ month.ideal.bonus() | number: 2 }} &euro;</span>
         </td>
       </tr>
