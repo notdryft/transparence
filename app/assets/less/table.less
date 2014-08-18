@@ -1,0 +1,32 @@
+
+.table {
+
+  & > thead > tr > th {
+    vertical-align: top;
+  }
+
+  td {
+    white-space: nowrap;
+
+    span {
+      color: #aaa;
+
+      &.below {
+        display: block;
+        font-size: 90%
+      }
+    }
+  }
+
+  .form-td {
+
+    padding-top: 6px;
+
+    input {
+      border: 1px solid #eee;
+      border-left-width: 2px;
+      border-radius: 4px 0 0 4px;
+      border-right: 2px solid #ddd;
+    }
+  }
+}

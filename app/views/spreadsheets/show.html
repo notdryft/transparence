@@ -40,7 +40,7 @@
         <th>Worked days</th>
         <th>Sales</th>
         <th class="hidden-xs hidden-sm">Tax-free rate</th>
-        <th class="hidden-xs hidden-sm">&Delta;&nbsp;of generated sales</th>
+        <th class="hidden-xs hidden-sm">&Delta;&nbsp;of&nbsp;generated sales</th>
         <th>Mean&nbsp;of&nbsp;&Delta; generated sales</th>
         <th>Bonus</th>
       </tr>
@@ -51,27 +51,27 @@
           {{ month.millis | date: 'MMMM' }}
           <span class="below">{{ month.millis | date: 'yyyy' }}</span>
         </td>
-        <td class="text-right">
+        <td class="form-td text-right">
           <input class="text-right"
                  type="number" step="0.5" min="0" max="{{ month.businessDays }}"
                  ng-model="month.workedDays">
           <span class="follow">{{ month.businessDays }}</span>
         </td>
         <td class="text-right">
-          {{ month.sales() | number: 2 }}&nbsp;&euro;
+          {{ month.sales() | number: 2 }} &euro;
           <span class="below">{{ month.ideal.sales() | number: 2 }} &euro;</span>
         </td>
         <td class="text-right hidden-xs hidden-sm">{{ month.taxFreeRate() | number: 2 }} &euro;</td>
         <td class="text-right hidden-xs hidden-sm">
-          {{ month.delta() | number: 2 }}&nbsp;&euro;
+          {{ month.delta() | number: 2 }} &euro;
           <span class="below">{{ month.ideal.delta() | number: 2 }} &euro;</span>
         </td>
         <td class="text-right">
-          {{ month.mean() | number: 2 }}&nbsp;&euro;
+          {{ month.mean() | number: 2 }} &euro;
           <span class="below">{{ month.ideal.mean() | number: 2 }} &euro;</span>
         </td>
         <td class="text-right">
-          {{ month.bonus() | number: 2 }}&nbsp;&euro;
+          {{ month.bonus() | number: 2 }} &euro;
           <span class="below">{{ month.ideal.bonus() | number: 2 }} &euro;</span>
         </td>
       </tr>
