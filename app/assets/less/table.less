@@ -23,10 +23,49 @@
     padding-top: 6px;
 
     input {
-      border: 1px solid #eee;
+      background-color: transparent;
+      border: 1px solid transparent;
       border-left-width: 2px;
-      border-radius: 4px 0 0 4px;
-      border-right: 2px solid #ddd;
+      border-right-width: 2px;
+
+      &:focus {
+        background-color: white;
+        border: 1px solid #aaa;
+        border-left-width: 2px;
+        border-radius: 4px 0 0 4px;
+        border-right-width: 2px;
+        outline: none;
+      }
+
+      &[type=number] {
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          color: #333;
+          cursor: pointer;
+          display: block;
+          position: relative;
+          text-align: center;
+          width: 8px;
+        }
+
+        &::-webkit-inner-spin-button:after,
+        &::-webkit-inner-spin-button:before {
+          color: #aaa;
+          content: "^";
+          font-family: monospace;
+          position: absolute;
+          right: 0;
+        }
+
+        &::-webkit-inner-spin-button:before {
+          top: 0px;
+        }
+
+        &::-webkit-inner-spin-button:after {
+          -webkit-transform: rotate(180deg);
+          bottom: 0px;
+        }
+      }
     }
   }
 }
