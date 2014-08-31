@@ -1,4 +1,3 @@
-/* global console */
 'use strict';
 
 transparence.directive('chart', ['$document', '$window', function ($document, $window) {
