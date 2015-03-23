@@ -1,4 +1,6 @@
-# Transparence [![Build Status](https://travis-ci.org/notdryft/transparence.svg?branch=master)](https://travis-ci.org/notdryft/transparence) [![Code Climate](https://codeclimate.com/github/notdryft/transparence.png)](https://codeclimate.com/github/notdryft/transparence) [![Code Climate](https://codeclimate.com/github/notdryft/transparence/coverage.png)](https://codeclimate.com/github/notdryft/transparence) [![Stories in Ready](https://badge.waffle.io/notdryft/transparence.svg?label=ready&title=Ready)](http://waffle.io/notdryft/transparence)
+# Transparence [![Build Status](https://travis-ci.org/notdryft/transparence.svg?branch=master)](https://travis-ci.org/notdryft/transparence) [![Code Climate](https://codeclimate.com/github/notdryft/transparence.png)](https://codeclimate.com/github/notdryft/transparence) [![Code Climate](https://codeclimate.com/github/notdryft/transparence/coverage.png)](https://codeclimate.com/github/notdryft/transparence)
+
+[![Stories in Ready](https://badge.waffle.io/notdryft/transparence.svg?label=ready&title=Ready)](http://waffle.io/notdryft/transparence) [![Stories In Progress](https://badge.waffle.io/notdryft/transparence.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/notdryft/transparence)
 
 A tool to help with bonus calculation in a **visual** and **easy** way.
 
